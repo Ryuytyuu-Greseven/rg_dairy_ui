@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 1000px;
+}
+
+body {
+  background-color: #121212;
+  /* Dark background color of your choice */
+  color: #ffffff;
+  /* Set text color to contrast with the dark background */
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  /* Example font */
+}
