@@ -18,9 +18,11 @@ import { AppSettings } from './app-settings';
 import { ToastrModule } from 'ngx-toastr';
 import { BookComponent } from './book/book.component';
 import { LoginComponent } from './login/login.component';
+import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [AppComponent, BookComponent, LoginComponent],
+  declarations: [AppComponent, BookComponent, LoginComponent, BooksCatalogComponent, AboutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

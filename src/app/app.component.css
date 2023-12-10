@@ -125,3 +125,8 @@ switch-buttons {
   background-color: #00796b;
   /* Button hover color */
 }
+
+
+.dash-header {
+  background-color: black;
+}

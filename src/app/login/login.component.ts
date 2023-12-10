@@ -24,6 +24,9 @@ export class LoginComponent {
   // signup/login process
   singup_loading = false;
 
+  // text animation
+  animationInProcess = true;
+
   constructor(
     private formbuilder: FormBuilder,
     private appService: AppServiceService,
@@ -32,6 +35,11 @@ export class LoginComponent {
     private router: Router
   ) {}
   ngOnInit() {
+    sessionStorage.clear();
+    setTimeout(() => {
+      this.stopAnimation();
+    }, 4000);
+
     this.loginForm = this.formbuilder.group({
       username: ['', Validators.required],
       password: [
@@ -76,11 +84,13 @@ export class LoginComponent {
   switchLogin() {
     this.enableLogin = !this.enableLogin;
     this.signupForm.reset();
+    this.signupForm.updateValueAndValidity();
   }
 
   switchToSignUp() {
     this.enableLogin = !this.enableLogin;
     this.loginForm.reset();
+    this.loginForm.updateValueAndValidity();
   }
 
   // login process
@@ -178,5 +188,19 @@ export class LoginComponent {
     //   username: newValue,
     // });
     // this.signupForm.updateValueAndValidity();
+  }
+
+  adjustFontSize(finalSize: any) {
+    let changingText: any = document.getElementById('logotext');
+
+    changingText.style.animation = `textAnimation 5s infinite alternate`;
+    changingText.style.fontSize = finalSize + 'px';
+  }
+
+  stopAnimation() {
+    let changingText: any = document.getElementById('logotext');
+
+    // changingText.style.animation = 'none';
+    this.animationInProcess = false;
   }
 }

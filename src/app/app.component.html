@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="dash-header">
   <button mat-icon-button (click)="toggleSidenav()">
     <mat-icon>menu</mat-icon>
   </button>
@@ -6,16 +6,18 @@
   <div class="spacer"></div>
   <nav *ngIf="isScreenSmall(); else largeScreen" class="nav-links">
     <a mat-button routerLink="/home">Home</a>
-    <a mat-button routerLink="/about">About</a>
-    <a mat-button routerLink="/services">Services</a>
-    <a mat-button routerLink="/contact">Contact</a>
+    <a mat-button routerLink="/books-catalog">Books</a>
+    <a mat-button routerLink="/about-us">About</a>
+    <!-- <a mat-button routerLink="/services">Services</a>
+    <a mat-button routerLink="/contact">Contact</a> -->
   </nav>
   <ng-template #largeScreen>
     <nav class="nav-links">
       <a mat-button routerLink="/home">Home</a>
-      <a mat-button routerLink="/about">About</a>
-      <a mat-button routerLink="/services">Services</a>
-      <a mat-button routerLink="/contact">Contact</a>
+      <a mat-button routerLink="/books-catalog">Books</a>
+      <a mat-button routerLink="/about-us">About</a>
+      <!-- <a mat-button routerLink="/services">Services</a>
+      <a mat-button routerLink="/contact">Contact</a> -->
     </nav>
   </ng-template>
 </mat-toolbar>
@@ -24,39 +26,15 @@
   <mat-sidenav #sidenav mode="side" [opened]="isScreenSmall()">
     <nav class="nav-links">
       <a mat-button routerLink="/home">Home</a>
-      <a mat-button routerLink="/about">About</a>
-      <a mat-button routerLink="/services">Services</a>
-      <a mat-button routerLink="/contact">Contact</a>
+      <a mat-button routerLink="/books-catalog">Books</a>
+      <a mat-button routerLink="/about-us">About</a>
+      <!-- <a mat-button routerLink="/services">Services</a>
+      <a mat-button routerLink="/contact">Contact</a> -->
     </nav>
   </mat-sidenav>
   <mat-sidenav-content>
 
-    <ng-container *ngTemplateOutlet="loginformdiv"></ng-container>
-    <!-- <ng-container *ngTemplateOutlet="bookpaper"></ng-container> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-<ng-template #loginformdiv>
-
-</ng-template>
-
-<ng-template #bookpaper>
-  <!-- <div class="book-page">
-    <div class="page-header">
-      <h1>Title of the Book</h1>
-      <p>Author Name</p>
-    </div>
-    <div class="page-content">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut urna eu lectus interdum rhoncus eget vel massa.
-        Nulla facilisi.
-      </p>
-    </div>
-    <div class="page-footer">
-      <p>&copy; Year Publisher</p>
-    </div>
-  </div> -->
-</ng-template>
 
 <router-outlet></router-outlet>

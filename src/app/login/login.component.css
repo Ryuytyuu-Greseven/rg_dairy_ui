@@ -1,5 +1,3 @@
-
-
 .form-container {
   max-width: 400px;
   margin: 0 auto;
@@ -10,10 +8,20 @@
   /* Darker form background */
 }
 
+/*  FORMS */
+.form-group {
+  border-radius: 20px;
+  padding: 5px;
+  padding-right: 50%;
+  background-color: black;
+  color: wheat;
+  margin-bottom: 10px;
+}
+
 .login-border {
   margin-top: 100px;
   margin-bottom: 10px;
-  border-color: green;
+  border-color: rgb(139, 147, 139);
   border-radius: 25px;
   border-width: 2px;
 }
@@ -95,7 +103,7 @@ button[type="submit"]:hover {
 
 
 /* switch logins */
-switch-buttons {
+.switch-buttons {
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -104,7 +112,7 @@ switch-buttons {
 .switch-button {
   padding: 10px 20px;
   margin: 0 10px;
-  background-color: #009688;
+  background-color: #373a3a;
   /* Button color */
   color: #ffffff;
   /* Button text color */
@@ -114,6 +122,194 @@ switch-buttons {
 }
 
 .switch-button:hover {
-  background-color: #00796b;
+  background-color: #9da7a6;
   /* Button hover color */
+}
+
+
+
+/*  BACKGROUND CLIP */
+
+.clip-logo {
+  padding: 50px;
+  line-height: 0.5;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 12%;
+  /* margin-left: -20%; */
+  /* text-shadow: 0px 200px 50px #1a1515; */
+  /* text-shadow: 0px 0px 121px #536c3f; */
+
+  font-size: 12.0em;
+  text-transform: uppercase;
+  font-family: 'Open Sans Pro', sans-serif;
+  background: url('../../assets//images//backrgounds//logo_bg.jpg');
+  background-size: cover;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* FLEX LOGIN */
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-left {
+  width: 50%;
+  margin-top: 4%;
+  margin-left: 10%;
+}
+
+.login-right {
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width:1400px) {
+  .clip-logo {
+    padding: 50px;
+    line-height: 0.5;
+    text-align: center;
+    font-weight: 800;
+    margin-top: 20%;
+
+    font-size: 9.0em;
+    text-transform: uppercase;
+    font-family: 'Open Sans Pro', sans-serif;
+    background: url('../../assets//images//backrgounds//logo_bg.jpg');
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .login-left {
+    width: 50%;
+    margin-top: 4%;
+    margin-left: 2%;
+  }
+
+  .login-right {
+    width: 50%;
+    /* margin-right: -5% */
+  }
+
+
+  .resize-logo {
+    font-size: 10px;
+    margin-top: -10%;
+
+    animation: textAnimationa 0 normal;
+    /* Change the duration as needed */
+  }
+
+  @keyframes textAnimationa {
+    from {
+      font-size: 2px;
+    }
+
+    to {
+      font-size: 1px;
+      /* Change this to the final size */
+    }
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .clip-logo {
+    padding: 50px;
+    line-height: 0.5;
+    text-align: center;
+    font-weight: 800;
+    margin-top: 20%;
+
+    font-size: 8.0em;
+    text-transform: uppercase;
+    font-family: 'Open Sans Pro', sans-serif;
+    background: url('../../assets//images//backrgounds//logo_bg.jpg');
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .login-left {
+    width: 50%;
+    margin-top: 4%;
+    margin-left: 2%;
+  }
+
+  .login-right {
+    width: 50%;
+    /* margin-right: -5% */
+  }
+
+
+  .resize-logo {
+    font-size: 5px;
+    margin-top: -10%;
+
+    animation: textAnimationa 0 normal;
+    /* Change the duration as needed */
+  }
+
+  @keyframes textAnimationa {
+    from {
+      font-size: 2px;
+    }
+
+    to {
+      font-size: 7.0em;
+      /* Change this to the final size */
+    }
+  }
+}
+
+
+
+/* TEXT TRANSFORMATION */
+
+.resize-logo {
+  font-size: 20px;
+  animation: textAnimationa 2s infinite alternate;
+  /* Change the duration as needed */
+}
+
+@keyframes textAnimationa {
+  0% {
+    font-size: 2px;
+    opacity: 0%;
+  }
+
+  10% {
+    opacity: 10%;
+  }
+
+  15% {
+    opacity: 25%;
+  }
+
+  20%, 40%, 60%, 80% {
+    opacity: 0%;
+  }
+
+  30% {
+    opacity: 40%;
+  }
+
+  50% {
+    opacity: 50%;
+  }
+
+  70% {
+    opacity: 60%;
+  }
+
+  90% {
+    opacity: 80%;
+  }
+
+  100% {
+    font-size: 20px;
+    /* Change this to the final size */
+  }
 }
