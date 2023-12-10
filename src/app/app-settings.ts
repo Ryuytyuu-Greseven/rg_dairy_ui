@@ -10,7 +10,7 @@ export class AppSettings {
 
   APIS = {
     LOGIN_USER: environment.apiUrl + '/users/login',
-    SIGNUP_USER: environment.apiUrl + '/users/singup',
+    SIGNUP_USER: environment.apiUrl + '/users/signup',
     FETCH_USER_DETAILS: environment.apiUrl + '/user/details',
   };
 

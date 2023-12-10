@@ -1,0 +1,168 @@
+.book-page {
+  width: 60%;
+  /* Adjust the width of the book page */
+  margin: 20px auto;
+  background-color: #fff;
+  /* Color of the book page */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Shadow effect for the book */
+  padding: 20px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  /* Color of the book title */
+}
+
+.page-header p {
+  margin: 0;
+  font-size: 18px;
+  color: #555;
+  /* Color of the author name */
+}
+
+.page-content {
+  line-height: 1.6;
+}
+
+.page-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+  /* Color of the footer text */
+}
+
+
+/* SMOOTH PAGE TRANSMITION */
+
+/* Basic styles for the book layout */
+.book {
+  width: 60%;
+  height: 800px;
+  margin: auto;
+  perspective: 1000px;
+  margin-left: 50%;
+  margin-top: 3%;
+  /* Adds depth to the book */
+}
+
+.end-card {
+  box-shadow: 0 0 20px rgba(180, 178, 178, 0.1);
+}
+
+.end-title {
+  font-size: 100px;
+  margin-top: 60%;
+  margin-left: 14%;
+}
+
+.page {
+  /* Height of the pages */
+  height: 800px;
+  width: 600px;
+
+  /* coolrs */
+  background-color: #E0C9A6;
+  color: black;
+  font-size: large;
+
+  /* border */
+  border-radius: 25px;
+
+  /* box-shadow: 0 0 20px rgba(180, 178, 178, 0.1); */
+  transform-style: preserve-3d;
+  /* Preserves 3D transformations */
+  transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+  /* Smooth transition for page flipping */
+  /* position: relative; */
+  z-index: 1;
+
+  /* stack papers */
+  position: absolute;
+  /* box-shadow: 0 10px 34px white; */
+}
+
+.page .content {
+  padding: 20px;
+}
+
+.content-log {
+  margin-top: 10%;
+  font-style: italic;
+  text-align: justify;
+}
+
+/* Page turning effect */
+.page.turn {
+  transform: rotateY(-180deg);
+  z-index: 2;
+  opacity: 0.2;
+}
+
+.page.turn .content {
+  transition: opacity 1.5s ease-in-out;
+  opacity: 0;
+}
+
+/* Styling for odd and even pages */
+.page:nth-child(odd) {
+  transform-origin: left center;
+}
+
+.page:nth-child(even) {
+  transform-origin: left center;
+}
+
+/* Initially hides the back of the page */
+.page:nth-child(odd) .content {
+  /* transform: rotateY(-180deg); */
+}
+
+.page-no {
+  text-align: right;
+  font-size: larger;
+  /* background-color: #d1b386; */
+  padding: 1%;
+  /* flex: auto; */
+  display: inline-block;
+  position: fixed;
+  top: 10px;
+  right: 5%;
+}
+
+/* Media query for larger screens (laptops) */
+@media screen and (max-width: 1024px) {
+
+  .page {
+    width: 600px;
+    height: 800px;
+    color: black;
+    /* Height of the pages */
+
+    /* coolrs */
+    background-color: #E0C9A6;
+    color: black;
+    font-size: small;
+
+
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    /* Preserves 3D transformations */
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    /* Smooth transition for page flipping */
+    /* position: relative; */
+    z-index: 1;
+
+    /* stack papers */
+    position: absolute;
+  }
+}

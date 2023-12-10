@@ -15,9 +15,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
 import { AppServiceService } from './app-service.service';
 import { AppSettings } from './app-settings';
+import { ToastrModule } from 'ngx-toastr';
+import { BookComponent } from './book/book.component';
+import { LoginComponent } from './login/login.component';
+import { BooksCatelogComponent } from './books-catelog/books-catelog.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BookComponent, LoginComponent, BooksCatelogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +34,7 @@ import { AppSettings } from './app-settings';
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
+    ToastrModule.forRoot(),
 
     FormsModule,
     ReactiveFormsModule,

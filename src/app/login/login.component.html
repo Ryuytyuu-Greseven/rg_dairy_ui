@@ -1,0 +1,77 @@
+<div class="form-container login-border" *ngIf="enableLogin">
+  <h2 class="signup-head">Login</h2>
+  <form [formGroup]="loginForm">
+
+    <label class="singup-label">User Name</label>
+    <mat-form-field class="form-group">
+      <input matInput formControlName="username" placeholder="Username" (keyup)="replaceSpace($event)">
+      <mat-error *ngIf="loginForm.get('username')?.hasError('required')">Username is required</mat-error>
+    </mat-form-field>
+
+    <label class="singup-label">Password</label>
+    <mat-form-field class="form-group">
+      <input matInput formControlName="password" type="password" placeholder="Password">
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+      <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be at least 8
+        characters</mat-error>
+      <mat-error *ngIf="loginForm.get('password')?.hasError('maxlength')">Password must not exceed 20
+        characters</mat-error>
+    </mat-form-field>
+
+    <div class="switch-buttons">
+      <button class="switch-button" (click)="onClickLogin()">Login</button>
+      <button class="switch-button" (click)="switchToSignUp()">Switch</button>
+    </div>
+
+    <!-- <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Login</button>
+    <button mat-raised-button color="primary" (click)="switchToSignUp()">Sign UP</button> -->
+  </form>
+</div>
+
+<div class="form-container login-border" *ngIf="!enableLogin">
+  <h2 class="signup-head">Sign Up</h2>
+  <form [formGroup]="signupForm">
+    <label class="singup-label">Profile Name</label>
+    <mat-form-field class="form-group">
+      <input matInput formControlName="profilename" placeholder="Profile Name">
+      <mat-error *ngIf="signupForm.get('profilename')?.hasError('required')">Profile name is required</mat-error>
+      <mat-error *ngIf="signupForm.get('profilename')?.hasError('minlength')">Profile name must be at least 8
+        characters</mat-error>
+      <mat-error *ngIf="signupForm.get('profilename')?.hasError('maxlength')">Profile name must not exceed 20
+        characters</mat-error>
+    </mat-form-field>
+
+    <label class="singup-label">User Name</label>
+    <mat-form-field class="form-group">
+      <input matInput formControlName="username" placeholder="User Name" (keyup)="replaceSpace($event)">
+      <mat-error *ngIf="signupForm.get('username')?.hasError('required')">User name is required</mat-error>
+      <mat-error *ngIf="signupForm.get('username')?.hasError('exists')">User name already exists!</mat-error>
+    </mat-form-field>
+
+    <label class="singup-label">Email</label>
+    <mat-form-field class="form-group">
+      <input matInput formControlName="email" placeholder="Email">
+      <mat-error *ngIf="signupForm.get('email')?.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email</mat-error>
+    </mat-form-field>
+
+    <label class="singup-label">Password</label>
+    <mat-form-field class="form-group">
+      <input matInput formControlName="password" type="password" placeholder="Password">
+      <mat-error *ngIf="signupForm.get('password')?.hasError('required')">Password is required</mat-error>
+      <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be at least 8
+        characters</mat-error>
+      <mat-error *ngIf="signupForm.get('password')?.hasError('maxlength')">Password must not exceed 20
+        characters</mat-error>
+    </mat-form-field>
+
+    <div class="switch-buttons">
+      <button class="switch-button" (click)="onClickSignup()">Sign Up</button>
+      <button class="switch-button" (click)="switchToSignUp()">Switch</button>
+    </div>
+    <!--
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Sign Up</button>
+    <button mat-raised-button color="primary" (click)="switchLogin()">Login</button> -->
+
+  </form>
+</div>
