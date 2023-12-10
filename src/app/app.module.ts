@@ -18,10 +18,9 @@ import { AppSettings } from './app-settings';
 import { ToastrModule } from 'ngx-toastr';
 import { BookComponent } from './book/book.component';
 import { LoginComponent } from './login/login.component';
-import { BooksCatelogComponent } from './books-catelog/books-catelog.component';
 
 @NgModule({
-  declarations: [AppComponent, BookComponent, LoginComponent, BooksCatelogComponent],
+  declarations: [AppComponent, BookComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
