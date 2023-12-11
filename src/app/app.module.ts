@@ -12,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
 import { AppServiceService } from './app-service.service';
 import { AppSettings } from './app-settings';
 import { ToastrModule } from 'ngx-toastr';
@@ -20,9 +21,16 @@ import { BookComponent } from './book/book.component';
 import { LoginComponent } from './login/login.component';
 import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
 import { AboutComponent } from './about/about.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, BookComponent, LoginComponent, BooksCatalogComponent, AboutComponent],
+  declarations: [
+    AppComponent,
+    BookComponent,
+    LoginComponent,
+    BooksCatalogComponent,
+    AboutComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -41,7 +49,11 @@ import { AboutComponent } from './about/about.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AppServiceService, AppSettings],
+  providers: [
+    AppServiceService,
+    AppSettings,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

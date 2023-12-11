@@ -5,7 +5,7 @@
   <span class="logo">RG Dairy</span>
   <div class="spacer"></div>
   <nav *ngIf="isScreenSmall(); else largeScreen" class="nav-links">
-    <a mat-button routerLink="/home">Home</a>
+    <!-- <a mat-button routerLink="/home">Home</a> -->
     <a mat-button routerLink="/books-catalog">Books</a>
     <a mat-button routerLink="/about-us">About</a>
     <!-- <a mat-button routerLink="/services">Services</a>
@@ -13,7 +13,7 @@
   </nav>
   <ng-template #largeScreen>
     <nav class="nav-links">
-      <a mat-button routerLink="/home">Home</a>
+      <!-- <a mat-button routerLink="/home">Home</a> -->
       <a mat-button routerLink="/books-catalog">Books</a>
       <a mat-button routerLink="/about-us">About</a>
       <!-- <a mat-button routerLink="/services">Services</a>
@@ -25,7 +25,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" [opened]="isScreenSmall()">
     <nav class="nav-links">
-      <a mat-button routerLink="/home">Home</a>
+      <!-- <a mat-button routerLink="/home">Home</a> -->
       <a mat-button routerLink="/books-catalog">Books</a>
       <a mat-button routerLink="/about-us">About</a>
       <!-- <a mat-button routerLink="/services">Services</a>

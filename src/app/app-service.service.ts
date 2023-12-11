@@ -23,4 +23,12 @@ export class AppServiceService {
     const url = this.appSettings.APIS.FETCH_USER_DETAILS;
     return this.appSettings.requestServer(body, url);
   }
+  createDairy(body: any) {
+    const url = this.appSettings.APIS.CREATE_DAIRY;
+    return this.appSettings.requestServer(body, url);
+  }
+  selfDairies(body: any) {
+    const url = this.appSettings.APIS.FETCH_SELF_DAIRIES;
+    return this.appSettings.requestServer(body, url);
+  }
 }

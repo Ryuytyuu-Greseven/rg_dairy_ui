@@ -1,7 +1,7 @@
 .catalog-details {
   padding: 50px 0;
   text-align: center;
-  margin-top:12%;
+  margin-top: 12%;
 }
 
 .catalog-info {
@@ -53,7 +53,16 @@
   .catalog-details {
     padding: 50px 0;
     text-align: center;
-    margin-top:5%;
+    margin-top: 5%;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width:1400px) {
+  .catalog-details {
+    padding: 50px 0;
+    text-align: center;
+    margin-top: 5%;
     height: 500px;
   }
 }

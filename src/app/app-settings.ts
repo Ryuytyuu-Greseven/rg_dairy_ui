@@ -12,6 +12,8 @@ export class AppSettings {
     LOGIN_USER: environment.apiUrl + '/users/login',
     SIGNUP_USER: environment.apiUrl + '/users/signup',
     FETCH_USER_DETAILS: environment.apiUrl + '/user/details',
+    CREATE_DAIRY: environment.apiUrl + '/users/create',
+    FETCH_SELF_DAIRIES: environment.apiUrl + '/users/self-dairies',
   };
 
   requestServer(body: any, url: string) {

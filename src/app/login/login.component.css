@@ -27,7 +27,7 @@
 }
 
 .signup-head {
-  color: wheat
+  color: wheat;
 }
 
 .singup-label {
@@ -109,20 +109,53 @@ button[type="submit"]:hover {
   margin-top: 20px;
 }
 
-.switch-button {
+.switch-button1 {
   padding: 10px 20px;
   margin: 0 10px;
   background-color: #373a3a;
   /* Button color */
   color: #ffffff;
   /* Button text color */
-  border: none;
-  border-radius: 3px;
+  /* border: none; */
+  font-weight: 700;
+  border-radius: 20px;
   cursor: pointer;
+
+  animation: loginbutton1 1.5s infinite;
 }
 
-.switch-button:hover {
-  background-color: #9da7a6;
+.switch-button2 {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #373a3a;
+  /* Button color */
+  color: #ffffff;
+  /* Button text color */
+  /* border: none; */
+  font-weight: 700;
+  border-radius: 20px;
+  cursor: pointer;
+
+  animation: loginbutton2 1.5s infinite;
+}
+
+.switch-button1:hover {
+  background-color: black;
+  color: white;
+  /* font-size: px; */
+  font-weight: 700;
+  border-radius: 20px;
+  border-color: rgb(139, 147, 139);
+  /* Button hover color */
+}
+
+.switch-button2:hover {
+  background-color: black;
+  color: white;
+  /* font-size: px; */
+  font-weight: 700;
+  border-radius: 20px;
+  border-color: rgb(139, 147, 139);
   /* Button hover color */
 }
 
@@ -311,5 +344,42 @@ button[type="submit"]:hover {
   100% {
     font-size: 20px;
     /* Change this to the final size */
+  }
+}
+
+@keyframes loginbutton1 {
+  0% {
+    /* background-color: black;
+    color: white;
+    font-weight: 700;
+    border-radius: 20px; */
+    background-color: #000000;
+  }
+
+  100% {
+    /* padding: 10px 20px;
+    margin: 0 10px; */
+    border-color: rgb(139, 147, 139);
+  }
+}
+
+@keyframes loginbutton2 {
+  0% {
+    background-color: #373a3a;
+    /* padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #373a3a;
+    color: #ffffff;
+    border-radius: 6px;
+    cursor: pointer; */
+  }
+
+  100% {
+    background-color: black;
+    /* color: white;
+    font-weight: 700;
+    border-radius: 20px;
+    border-color: rgb(139, 147, 139); */
+
   }
 }

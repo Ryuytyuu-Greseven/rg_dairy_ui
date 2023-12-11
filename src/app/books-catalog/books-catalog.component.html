@@ -1,104 +1,43 @@
-<div class="book-grid">
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 1</h3>
-      <p>Author: Author Name 1</p>
-      <p>Genre: Fiction</p>
-      <p>Published: 2022</p>
-    </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
+<div class="book-grid" *ngIf="!loadNewBook">
 
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 2</h3>
-      <p>Author: Author Name 2</p>
-      <p>Genre: Mystery</p>
-      <p>Published: 2021</p>
+  <ng-container *ngFor="let dairy of selfDairies">
+    <div class="book">
+      <div class="book-details">
+        <h3>{{dairy?.title}}</h3>
+        <!-- <p>Author: Author Name 1</p> -->
+        <!-- <p>Genre: {{{Fiction}}}</p> -->
+        <p>{{dairy?.year}}</p>
+      </div>
+      <div class="overlay">
+        <p>Click for more details</p>
+      </div>
     </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 2</h3>
-      <p>Author: Author Name 2</p>
-      <p>Genre: Mystery</p>
-      <p>Published: 2021</p>
-    </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 2</h3>
-      <p>Author: Author Name 2</p>
-      <p>Genre: Mystery</p>
-      <p>Published: 2021</p>
-    </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 2</h3>
-      <p>Author: Author Name 2</p>
-      <p>Genre: Mystery</p>
-      <p>Published: 2021</p>
-    </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 2</h3>
-      <p>Author: Author Name 2</p>
-      <p>Genre: Mystery</p>
-      <p>Published: 2021</p>
-    </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 2</h3>
-      <p>Author: Author Name 2</p>
-      <p>Genre: Mystery</p>
-      <p>Published: 2021</p>
-    </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 2</h3>
-      <p>Author: Author Name 2</p>
-      <p>Genre: Mystery</p>
-      <p>Published: 2021</p>
-    </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
-  <div class="book">
-    <div class="book-details">
-      <h3>Book Title 2</h3>
-      <p>Author: Author Name 2</p>
-      <p>Genre: Mystery</p>
-      <p>Published: 2021</p>
-    </div>
-    <div class="overlay">
-      <p>Click for more details</p>
-    </div>
-  </div>
+  </ng-container>
 
+  <!-- <div class="book">
+    <div class="book-details">
+      <h3>Book Title 2</h3>
+      <p>Genre: Mystery</p>
+      <p>Published: 2021</p>
+    </div>
+    <div class="overlay">
+      <p>Click for more details</p>
+    </div>
+  </div> -->
   <!-- Add more books as needed -->
+
+  <ng-container *ngFor="let test of [].constructor(2)">
+    <div class="new-book">
+      <p class="new-book-logo">
+        +
+      </p>
+      <p></p>
+      <div class="overlay" (click)="createNewBook()">
+        <p>Add New DAIRY</p>
+      </div>
+    </div>
+  </ng-container>
+
 </div>
+
+<app-book [bookType]="'new'" *ngIf="loadNewBook" (incomingBook)="newDairyAdded($event)"></app-book>
