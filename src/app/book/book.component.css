@@ -43,16 +43,7 @@
 
 /* SMOOTH PAGE TRANSMITION */
 
-/* Basic styles for the book layout */
-.book {
-  /* width: 60%; */
-  height: 800px;
-  margin: auto;
-  perspective: 1000px;
-  margin-left: 50%;
-  margin-top: 3%;
-  /* Adds depth to the book */
-}
+
 
 .end-card {
   box-shadow: 0 0 20px rgba(180, 178, 178, 0.1);
@@ -64,116 +55,16 @@
   margin-left: 14%;
 }
 
-.page {
-  /* Height of the pages */
+/* Basic styles for the book layout */
+.book {
+  /* width: 60%; */
   height: 800px;
-  width: 600px;
-
-  /* coolrs */
-  background-color: #E0C9A6;
-  color: black;
-  font-size: large;
-  line-height: 1.4;
-
-  /* border */
-  border-radius: 25px;
-
-  /* box-shadow: 0 0 20px rgba(180, 178, 178, 0.1); */
-  transform-style: preserve-3d;
-  /* Preserves 3D transformations */
-  transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
-  /* Smooth transition for page flipping */
-  /* position: relative; */
-  z-index: 1;
-
-  /* stack papers */
-  position: absolute;
-  /* box-shadow: 0 10px 34px white; */
+  margin: auto;
+  perspective: 1000px;
+  margin-left: 50%;
+  margin-top: 3%;
+  /* Adds depth to the book */
 }
-
-/* Media query for larger screens (laptops) */
-@media screen and (max-width: 1024px) {
-  .book {
-    /* width: 60%; */
-    height: 90%;
-    margin: auto;
-    perspective: 800px;
-    margin-left: 50%;
-    margin-top: 0%;
-    /* Adds depth to the book */
-  }
-
-  .page {
-    width: 90%;
-    height: 65%;
-    color: black;
-    /* Height of the pages */
-
-    /* coolrs */
-    background-color: #E0C9A6;
-    color: black;
-    font-size: 13px;
-
-    /* border */
-    border-radius: 25px;
-
-
-    /* background-color: #fff; */
-    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
-    transform-style: preserve-3d;
-    /* Preserves 3D transformations */
-    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
-    /* Smooth transition for page flipping */
-    /* position: relative; */
-    z-index: 1;
-
-    /* stack papers */
-    position: absolute;
-  }
-}
-
-/* Media query for larger screens (laptops) */
-@media screen and (max-width: 1376px) {
-  .book {
-    /* width: 60%; */
-    height: 90%;
-    margin: auto;
-    perspective: 800px;
-    margin-left: 50%;
-    margin-top: 0%;
-    /* Adds depth to the book */
-  }
-
-  .page {
-    width: 90%;
-    height: 65%;
-    color: black;
-    /* Height of the pages */
-
-    /* coolrs */
-    background-color: #E0C9A6;
-    color: black;
-    font-size: 13px;
-    line-height: 1.4;
-
-    /* border */
-    border-radius: 25px;
-
-
-    /* background-color: #fff; */
-    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
-    transform-style: preserve-3d;
-    /* Preserves 3D transformations */
-    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
-    /* Smooth transition for page flipping */
-    /* position: relative; */
-    z-index: 1;
-
-    /* stack papers */
-    position: absolute;
-  }
-}
-
 
 .page .content {
   padding: 20px;
@@ -235,6 +126,7 @@
   font-size: 5em;
   font-weight: 500;
   font-style: italic;
+  text-shadow: #333;
 }
 
 .book-year {
@@ -253,9 +145,9 @@
   border-radius: 20px;
   position: absolute;
   right: 10px;
-  bottom:10px;
+  bottom: 10px;
   font-size: 15px;
-  color :  #E0C9A6;
+  color: #E0C9A6;
 }
 
 .create-dairy:hover {
@@ -266,7 +158,194 @@
 
 .close-dairy {
   position: absolute;
-  right:auto;
+  right: auto;
   left: 10px;
   bottom: 10px;
+}
+
+
+/* Styles for screens up to 1024px */
+/* Media query for larger screens (laptops) */
+@media screen and (max-width: 1024px) {
+  .book {
+    /* width: 60%; */
+    height: 90%;
+    margin: auto;
+    perspective: 800px;
+    margin-left: 50%;
+    margin-top: 0%;
+    /* Adds depth to the book */
+  }
+
+  .page {
+    width: 90%;
+    height: 65%;
+    color: black;
+    /* Height of the pages */
+
+    /* coolrs */
+    background-color: #E0C9A6;
+    color: black;
+    font-size: 13px;
+
+    /* border */
+    border-radius: 25px;
+
+
+    /* background-color: #fff; */
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+    transform-style: preserve-3d;
+    /* Preserves 3D transformations */
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    /* Smooth transition for page flipping */
+    /* position: relative; */
+    z-index: 1;
+
+    /* stack papers */
+    position: absolute;
+  }
+
+  /* FONTS PREVIEW */
+  .font-list {
+    position: absolute;
+    right: 10px;
+    top: 10%;
+
+    max-height: 800px;
+    /* Set the maximum height for scroll */
+    overflow-y: auto;
+    /* Enable vertical scroll */
+  }
+
+  .font-preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 20px;
+  }
+}
+
+
+/* Styles for screens between 1025px and 1376px */
+/* Media query for larger screens (laptops) */
+@media screen and (min-width: 1025px) and (max-width: 1376px) {
+  .book {
+    /* width: 60%; */
+    height: 90%;
+    margin: auto;
+    perspective: 800px;
+    margin-left: 50%;
+    margin-top: 0%;
+    /* Adds depth to the book */
+  }
+
+  .page {
+    width: 90%;
+    height: 65%;
+    color: black;
+    /* Height of the pages */
+
+    /* coolrs */
+    background-color: #E0C9A6;
+    color: black;
+    font-size: 13px;
+    line-height: 1.4;
+
+    /* border */
+    border-radius: 25px;
+
+
+    /* background-color: #fff; */
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+    transform-style: preserve-3d;
+    /* Preserves 3D transformations */
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    /* Smooth transition for page flipping */
+    /* position: relative; */
+    z-index: 1;
+
+    /* stack papers */
+    position: absolute;
+  }
+
+  /* FONTS PREVIEW */
+  .font-list {
+    position: absolute;
+    right: 10px;
+    top: 10%;
+
+    max-height: 100%;
+    /* Set the maximum height for scroll */
+    overflow-y: auto;
+    /* Enable vertical scroll */
+  }
+
+  .font-preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 20px;
+  }
+}
+
+
+/* Styles for screens larger than 1376px */
+@media screen and (min-width: 1377px) {
+  .page {
+    /* Height of the pages */
+    height: 800px;
+    width: 600px;
+
+    /* coolrs */
+    background-color: #E0C9A6;
+    color: black;
+    font-size: large;
+    line-height: 1.4;
+
+    /* border */
+    border-radius: 25px;
+
+    /* box-shadow: 0 0 20px rgba(180, 178, 178, 0.1); */
+    transform-style: preserve-3d;
+    /* Preserves 3D transformations */
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    /* Smooth transition for page flipping */
+    /* position: relative; */
+    z-index: 1;
+
+    /* stack papers */
+    position: absolute;
+    /* box-shadow: 0 10px 34px white; */
+  }
+
+
+  /* FONTS PREVIEW */
+  .font-list {
+    position: absolute;
+    right: 10px;
+    top: 25%;
+    margin-right: 15%;
+
+    max-height: 800px;
+    /* Set the maximum height for scroll */
+    overflow-y: auto;
+    /* Enable vertical scroll */
+  }
+
+  .font-preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 20px;
+  }
+
+}
+
+.font-preview:hover {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px dotted;
 }

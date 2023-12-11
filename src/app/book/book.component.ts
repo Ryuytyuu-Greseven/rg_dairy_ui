@@ -18,6 +18,10 @@ export class BookComponent {
   // requests loading
   book_loading = false;
 
+  // fonts
+  fontsAvailable: { font: string; title: string }[] = [];
+  currentFont = { font: 'cursive', title: 'Cursive' };
+
   @Input() bookType: 'new' | 'old' = 'old';
   @Output() incomingBook = new EventEmitter();
 
@@ -36,6 +40,24 @@ export class BookComponent {
     }
 
     this.totalPages = this.totalPages.reverse();
+
+    this.fontsAvailable = this.getAllHtmlFonts;
+  }
+
+  // returns fonts array
+  get getAllHtmlFonts() {
+    return [
+      { font: 'roboto', title: 'Roboto' },
+      { font: 'cursive', title: 'Cursive' },
+      { font: 'fantasy', title: 'Fantasy' },
+      { font: 'math', title: 'Math' },
+      { font: 'monospace', title: 'Monospace' },
+      { font: 'Times New Roman', title: 'Times New Roman' },
+      { font: 'Verdana', title: 'Verdana' },
+      { font: 'Georgia', title: 'Georgia' },
+      { font: 'Courier New', title: 'Courier New' },
+      { font: 'Ubuntu', title: 'Ubuntu' },
+    ];
   }
 
   // page turn
@@ -102,5 +124,10 @@ export class BookComponent {
 
   closeDairy() {
     this.incomingBook.emit(false);
+  }
+
+  // =======  FONTS  ==========  //
+  applyFont(font: any) {
+    this.currentFont = font;
   }
 }
