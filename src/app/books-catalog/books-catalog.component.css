@@ -13,7 +13,8 @@
   transition: box-shadow 0.3s ease-in-out;
   background-color: #f9f9f9;
 
-  height: 150px;
+  height: 250px;
+  background-color: #E0C9A6;
 }
 
 .book:hover {
@@ -25,17 +26,19 @@
   text-align: center;
 }
 
-.book-details h3 {
-  margin-top: 10px;
+.book-title-mini {
+  margin-top: 40%;
   font-size: 18px;
   font-weight: bold;
   color: #333;
 }
 
-.book-details p {
-  margin-top: 5px;
+.book-year-mini {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   font-style: italic;
-  color: #666;
+  color: black;
 }
 
 .overlay {
@@ -68,11 +71,12 @@
 }
 
 
+
 /* NEW BOOK */
 .new-book {
   border: dotted;
   text-align: center;
-  height: 150px;
+  height: 250px;
 
   position: relative;
   overflow: hidden;
@@ -82,7 +86,7 @@
 }
 
 
-.new-book:hover .overlay{
+.new-book:hover .overlay {
   opacity: 1;
   cursor: pointer;
   background-color: #333;
@@ -93,5 +97,5 @@
   opacity: 0.1;
   font-size: 8em;
   text-decoration: dotted;
-  margin-top:25%
+  margin-top: 25%
 }

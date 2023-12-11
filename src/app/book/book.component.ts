@@ -97,6 +97,7 @@ export class BookComponent {
     const chunky = {
       title: document.getElementById('book-title')?.innerText,
       year: document.getElementById('book-year')?.innerText,
+      font: this.currentFont.font,
     };
 
     console.log(chunky);

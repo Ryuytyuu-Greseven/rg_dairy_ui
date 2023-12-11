@@ -3,11 +3,14 @@
   <ng-container *ngFor="let dairy of selfDairies">
     <div class="book">
       <div class="book-details">
-        <h3 [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive' }">
+        <h3 class="book-title-mini"
+          [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive' }">
           {{dairy?.title}}</h3>
         <!-- <p>Author: Author Name 1</p> -->
         <!-- <p>Genre: {{{Fiction}}}</p> -->
-        <p [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive' }">{{dairy?.year}}</p>
+        <p class="book-year-mini"
+          [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive' }">{{dairy?.year}}
+        </p>
       </div>
       <div class="overlay">
         <p>Click for more details</p>
