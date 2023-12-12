@@ -140,7 +140,7 @@
 
 .create-dairy {
   display: block;
-  background-color: #40281c;
+  background-color: black;
   padding: 10px;
   border-radius: 20px;
   position: absolute;
@@ -208,10 +208,10 @@
   /* FONTS PREVIEW */
   .font-list {
     position: absolute;
-    right: 10px;
-    top: 10%;
+    right: 5%;
+    top: 30%;
 
-    max-height: 800px;
+    max-height: 310px;
     /* Set the maximum height for scroll */
     overflow-y: auto;
     /* Enable vertical scroll */
@@ -223,6 +223,11 @@
     text-align: center;
     margin-bottom: 10px;
     border-radius: 20px;
+  }
+
+  .color-picker {
+    right: 15%;
+    top: 11%;
   }
 }
 
@@ -272,10 +277,10 @@
   /* FONTS PREVIEW */
   .font-list {
     position: absolute;
-    right: 10px;
-    top: 10%;
+    right: 5%;
+    top: 25%;
 
-    max-height: 100%;
+    max-height: 310px;
     /* Set the maximum height for scroll */
     overflow-y: auto;
     /* Enable vertical scroll */
@@ -287,6 +292,11 @@
     text-align: center;
     margin-bottom: 10px;
     border-radius: 20px;
+  }
+
+  .color-picker {
+    right: 15%;
+    top: 11%;
   }
 }
 
@@ -324,14 +334,20 @@
   /* FONTS PREVIEW */
   .font-list {
     position: absolute;
-    right: 10px;
+    right: 5%;
     top: 25%;
     margin-right: 15%;
 
-    max-height: 800px;
+    max-height: 310px;
     /* Set the maximum height for scroll */
     overflow-y: auto;
     /* Enable vertical scroll */
+  }
+
+  .font-list::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none
+      /* Webkit (Chrome, Safari, etc.) */
   }
 
   .font-preview {
@@ -342,10 +358,29 @@
     border-radius: 20px;
   }
 
+  .color-picker {
+    right: 10%;
+    top: 11%;
+  }
 }
 
 .font-preview:hover {
   cursor: pointer;
   border-radius: 5px;
   border: 2px dotted;
+}
+
+
+/* COLOUR PICKER */
+
+.picker-title {
+  right: 5%;
+}
+
+input[type="color"] {
+  width: 50px;
+  height: 50px;
+  border: none;
+  appearance: none;
+  /* Remove default styling */
 }

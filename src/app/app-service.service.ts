@@ -6,10 +6,17 @@ import { AppSettings } from './app-settings';
   providedIn: 'root',
 })
 export class AppServiceService {
+  // authentication
+  userLoggedIn = false;
+
   constructor(
     private httpClient: HttpClient,
     private appSettings: AppSettings
-  ) {}
+  ) {
+    if (sessionStorage.getItem('locator')?.length) {
+      this.userLoggedIn = true;
+    }
+  }
 
   login(body: any) {
     const url = this.appSettings.APIS.LOGIN_USER;

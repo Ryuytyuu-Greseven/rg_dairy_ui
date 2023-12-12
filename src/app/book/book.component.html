@@ -6,12 +6,12 @@
 
     </div>
   </div>
-  <div class="page coverpage" *ngIf="bookType === 'new'">
+  <div class="page coverpage" [ngStyle]="{'background-color':bgColorSelected}" *ngIf="bookType === 'new'">
     <div class="content">
       <div contenteditable="true" id="book-year" class="book-year" [innerHTML]="year"
-        [ngStyle]="{'font-family':currentFont.font}"></div>
+        [ngStyle]="{'font-family':currentFont.font,'color':bgColorSelecetdTitle}"></div>
       <div contenteditable="true" id="book-title" class="book-title" [innerHTML]="title"
-        [ngStyle]="{'font-family':currentFont.font}"></div>
+        [ngStyle]="{'font-family':currentFont.font,'color':bgColorSelecetdTitle}"></div>
       <!-- <input type="text" class="book-title" minlength="1" maxlength="25"> -->
     </div>
     <button class="create-dairy close-dairy" (click)="closeDairy()">Close</button>
@@ -90,16 +90,25 @@
   <!-- Add more pages with the same structure -->
 </div>
 
-<div class="font-list">
-  <ng-container *ngFor="let font of fontsAvailable">
-    <div class="font-preview" [ngStyle]="{'font-family': font?.font}" (click)="applyFont(font)">{{font?.title}}
-    </div>
-  </ng-container>
+<ng-container *ngIf="bookType === 'new'">
+  <div class="font-list">
+    <ng-container *ngFor="let font of fontsAvailable">
+      <div class="font-preview" [ngStyle]="{'font-family': font?.font}" (click)="applyFont(font)">{{font?.title}}
+      </div>
+    </ng-container>
 
-  <!-- <div class="font-preview" style="font-family: Arial;">Arial</div>
-  <div class="font-preview" style="font-family: 'Times New Roman';">Times New Roman</div>
-  <div class="font-preview" style="font-family: Verdana;">Verdana</div>
-  <div class="font-preview" style="font-family: Georgia;">Georgia</div>
-  <div class="font-preview" style="font-family: 'Courier New';">Courier New</div> -->
-  <!-- Add more font types as needed -->
-</div>
+    <!-- <div class="font-preview" style="font-family: Arial;">Arial</div>
+    <div class="font-preview" style="font-family: 'Times New Roman';">Times New Roman</div>
+    <div class="font-preview" style="font-family: Verdana;">Verdana</div>
+    <div class="font-preview" style="font-family: Georgia;">Georgia</div>
+    <div class="font-preview" style="font-family: 'Courier New';">Courier New</div> -->
+    <!-- Add more font types as needed -->
+  </div>
+
+  <div class="font-list color-picker">
+    <input type="color" id="colorPicker" (input)="onColorPickedBook($event)">
+  </div>
+  <div class="font-list color-picker picker-title">
+    <input type="color" id="colorPicker" (input)="onColorPickedTitle($event)">
+  </div>
+</ng-container>

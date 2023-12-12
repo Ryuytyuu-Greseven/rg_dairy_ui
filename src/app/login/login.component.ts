@@ -125,7 +125,7 @@ export class LoginComponent {
           sessionStorage.setItem('username', response.data.username);
           this.toastr.success(response.message);
           this.loginForm.reset();
-          this.router.navigateByUrl('/book');
+          this.router.navigateByUrl('/books-catalog');
         } else {
           this.toastr.error(response.message);
         }

@@ -22,6 +22,11 @@ export class BookComponent {
   fontsAvailable: { font: string; title: string }[] = [];
   currentFont = { font: 'cursive', title: 'Cursive' };
 
+  // colors
+  staticBGColor = '#E0C9A6';
+  bgColorSelected = this.staticBGColor;
+  bgColorSelecetdTitle = '#000000';
+
   @Input() bookType: 'new' | 'old' = 'old';
   @Output() incomingBook = new EventEmitter();
 
@@ -98,6 +103,8 @@ export class BookComponent {
       title: document.getElementById('book-title')?.innerText,
       year: document.getElementById('book-year')?.innerText,
       font: this.currentFont.font,
+      titleColor: this.bgColorSelecetdTitle,
+      bookColor: this.bgColorSelected,
     };
 
     console.log(chunky);
@@ -130,5 +137,14 @@ export class BookComponent {
   // =======  FONTS  ==========  //
   applyFont(font: any) {
     this.currentFont = font;
+  }
+
+  onColorPickedBook(event: any) {
+    console.log(event.target.value);
+    this.bgColorSelected = event.target.value;
+  }
+  onColorPickedTitle(event: any) {
+    console.log(event.target.value);
+    this.bgColorSelecetdTitle = event.target.value;
   }
 }

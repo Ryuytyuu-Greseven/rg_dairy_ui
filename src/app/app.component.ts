@@ -13,20 +13,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppComponent {
   title = 'dairy_ui';
 
-
-
   constructor(
     private fb: FormBuilder,
     private breakpointObserver: BreakpointObserver,
-    private appService: AppServiceService,
+    public appService: AppServiceService,
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   isScreenSmall(): boolean {
     return this.breakpointObserver.isMatched('(max-width: 768px)');
@@ -38,7 +34,8 @@ export class AppComponent {
     // For example, you might want to use Angular Router to navigate
   }
 
-
-
-
+  logoutUser() {
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }
