@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppSettings } from './app-settings';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,8 @@ import { AppSettings } from './app-settings';
 export class AppServiceService {
   // authentication
   userLoggedIn = false;
+  // books
+  oldDairySubject = new Subject();
 
   constructor(
     private httpClient: HttpClient,
@@ -36,6 +39,10 @@ export class AppServiceService {
   }
   selfDairies(body: any) {
     const url = this.appSettings.APIS.FETCH_SELF_DAIRIES;
+    return this.appSettings.requestServer(body, url);
+  }
+  dairyDetails(body: any) {
+    const url = this.appSettings.APIS.FETCH_DAIRY_DETAILS;
     return this.appSettings.requestServer(body, url);
   }
 }

@@ -6,18 +6,22 @@
   <div class="spacer"></div>
   <nav *ngIf="isScreenSmall(); else largeScreen" class="nav-links">
     <!-- <a mat-button routerLink="/home">Home</a> -->
-    <a mat-button routerLink="/books-catalog">Books</a>
-    <a mat-button routerLink="/about-us">About</a>
-    <a (click)="logoutUser()" *ngIf="appService.userLoggedIn">Logout</a>
+    <ng-container *ngIf="appService.userLoggedIn">
+      <a mat-button routerLink="/books-catalog">Books</a>
+      <a mat-button routerLink="/about-us">About</a>
+      <a (click)="logoutUser()">Logout</a>
+    </ng-container>
     <!-- <a mat-button routerLink="/services">Services</a>
     <a mat-button routerLink="/contact">Contact</a> -->
   </nav>
   <ng-template #largeScreen>
     <nav class="nav-links">
       <!-- <a mat-button routerLink="/home">Home</a> -->
-      <a mat-button routerLink="/books-catalog">Books</a>
-      <a mat-button routerLink="/about-us">About</a>
-      <a (click)="logoutUser()"  *ngIf="appService.userLoggedIn">Logout</a>
+      <ng-container *ngIf="appService.userLoggedIn">
+        <a mat-button routerLink="/books-catalog">Books</a>
+        <a mat-button routerLink="/about-us">About</a>
+        <a (click)="logoutUser()">Logout</a>
+      </ng-container>
       <!-- <a mat-button routerLink="/services">Services</a>
       <a mat-button routerLink="/contact">Contact</a> -->
     </nav>
@@ -28,9 +32,11 @@
   <mat-sidenav #sidenav mode="side" [opened]="isScreenSmall()">
     <nav class="nav-links">
       <!-- <a mat-button routerLink="/home">Home</a> -->
-      <a mat-button routerLink="/books-catalog">Books</a>
-      <a mat-button routerLink="/about-us">About</a>
-      <a (click)="logoutUser()"  *ngIf="appService.userLoggedIn">Logout</a>
+      <ng-container *ngIf="appService.userLoggedIn">
+        <a mat-button routerLink="/books-catalog">Books</a>
+        <a mat-button routerLink="/about-us">About</a>
+        <a (click)="logoutUser()">Logout</a>
+      </ng-container>
       <!-- <a mat-button routerLink="/services">Services</a>
       <a mat-button routerLink="/contact">Contact</a> -->
     </nav>

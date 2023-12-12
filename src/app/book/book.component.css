@@ -187,6 +187,7 @@
     background-color: #E0C9A6;
     color: black;
     font-size: 13px;
+    line-height: 1.4;
 
     /* border */
     border-radius: 25px;
@@ -228,6 +229,12 @@
   .color-picker {
     right: 15%;
     top: 11%;
+  }
+
+  .close-old-dairy {
+    position: absolute;
+    top: 12%;
+    right: 0%;
   }
 }
 
@@ -298,6 +305,12 @@
     right: 15%;
     top: 11%;
   }
+
+  .close-old-dairy {
+    position: absolute;
+    top: 12%;
+    right: 0%;
+  }
 }
 
 
@@ -362,6 +375,12 @@
     right: 10%;
     top: 11%;
   }
+
+  .close-old-dairy {
+    position: absolute;
+    top: 13%;
+    right: 13%;
+  }
 }
 
 .font-preview:hover {
@@ -383,4 +402,12 @@ input[type="color"] {
   border: none;
   appearance: none;
   /* Remove default styling */
+}
+
+.close-old-dairy.close-btn {
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #5d475e;
+  border: 1px solid;
+  cursor: pointer;
 }

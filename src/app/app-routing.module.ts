@@ -18,6 +18,7 @@ const routes: Routes = [
     path: 'books-catalog',
     component: BooksCatalogComponent,
     canActivate: [authGuard],
+    children: [{ path: '**', component: BookComponent }],
   },
   {
     path: 'about-us',

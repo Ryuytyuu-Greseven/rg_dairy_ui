@@ -14,6 +14,7 @@ export class AppSettings {
     FETCH_USER_DETAILS: environment.apiUrl + '/user/details',
     CREATE_DAIRY: environment.apiUrl + '/users/create',
     FETCH_SELF_DAIRIES: environment.apiUrl + '/users/self-dairies',
+    FETCH_DAIRY_DETAILS: environment.apiUrl + '/users/dairy-details',
   };
 
   requestServer(body: any, url: string) {

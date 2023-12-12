@@ -1,13 +1,26 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  OnInit,
+} from '@angular/core';
 import { AppServiceService } from '../app-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css'],
 })
-export class BookComponent {
+export class BookComponent implements OnDestroy, OnInit {
+  // current book
+  currentDairyId = '';
+  currentDairyDetails: any = {};
+
   // pages
   totalPages: Array<any> = [];
   previousTurnedPage = 0;
@@ -27,15 +40,35 @@ export class BookComponent {
   bgColorSelected = this.staticBGColor;
   bgColorSelecetdTitle = '#000000';
 
+  // subscriptions
+  urlSubscription = new Subscription();
+
   @Input() bookType: 'new' | 'old' = 'old';
   @Output() incomingBook = new EventEmitter();
 
   constructor(
     private appService: AppServiceService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    console.log('Yeah Book Opened');
+    this.urlSubscription = this.activatedRoute.url.subscribe({
+      next: (query) => {
+        console.log(query);
+
+        if (query.length) {
+          console.log(query[0].path);
+          this.currentDairyId = query[0].path;
+          // fetch dairy pages
+          this.fetchDairy();
+        }
+      },
+    });
+
+    // console.log(this.activatedRoute.url);
     for (let pageNo = 1; pageNo <= 10; pageNo++) {
       this.totalPages.push({
         pageNo,
@@ -146,5 +179,36 @@ export class BookComponent {
   onColorPickedTitle(event: any) {
     console.log(event.target.value);
     this.bgColorSelecetdTitle = event.target.value;
+  }
+
+  //  ==================   DAIRY DETAILS   ===================  //
+  fetchDairy() {
+    const chunky = {
+      dairyId: this.currentDairyId,
+    };
+
+    this.appService.dairyDetails(chunky).subscribe({
+      next: (response: any) => {
+        console.log('Login Response', response);
+
+        if (response?.success) {
+          this.currentDairyDetails = response.data;
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      error: () => {
+        this.toastr.error('Unable to login.');
+      },
+    });
+  }
+
+  closeOldDairy() {
+    this.router.navigate(['/books-catalog']);
+    this.appService.oldDairySubject.next(false);
+  }
+
+  ngOnDestroy() {
+    this.urlSubscription.unsubscribe();
   }
 }

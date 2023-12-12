@@ -1,7 +1,9 @@
 <div class="book">
 
   <!-- STATIC PAGES -->
-  <div class="page turn" *ngIf="bookType === 'old'">
+  <div class="page turn"
+    [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6'}"
+    *ngIf="bookType === 'old'">
     <div class="content">
 
     </div>
@@ -31,7 +33,9 @@
   <ng-container *ngIf="bookType === 'old'">
     <ng-container *ngFor="let pageDetails of totalPages;let ind = index">
       <!-- *ngIf="activePage === ind+1" -->
-      <div class="page" id="page-{{pageDetails.pageNo}}" (click)="onTurnPage(pageDetails)">
+      <div class="page"
+        [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6'}"
+        id="page-{{pageDetails.pageNo}}" (click)="onTurnPage(pageDetails)">
         <div class="content">
           <!-- Content for the first page -->
           <h2 class="page-no">Page {{pageDetails.pageNo}}</h2>
@@ -89,6 +93,8 @@
 
   <!-- Add more pages with the same structure -->
 </div>
+<div class="close-old-dairy close-btn" *ngIf="bookType === 'old'" (click)="closeOldDairy()">Close</div>
+
 
 <ng-container *ngIf="bookType === 'new'">
   <div class="font-list">
