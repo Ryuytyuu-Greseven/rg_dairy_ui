@@ -1,15 +1,17 @@
 .book-grid {
   display: grid;
   margin: 3%;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
 }
 
 .book {
+  max-width: 200px;
+  margin: 10%;
   position: relative;
   overflow: hidden;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 17px 8px 4px rgb(255 255 255 / 10%);
   transition: box-shadow 0.3s ease-in-out;
   background-color: #f9f9f9;
 
@@ -74,6 +76,7 @@
 
 /* NEW BOOK */
 .new-book {
+  max-width: 200px;
   border: dotted;
   text-align: center;
   height: 250px;

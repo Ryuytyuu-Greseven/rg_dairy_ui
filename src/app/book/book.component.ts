@@ -24,6 +24,7 @@ export class BookComponent implements OnDestroy, OnInit {
   // pages
   totalPages: Array<any> = [];
   previousTurnedPage = 0;
+  isUserWriting = false;
 
   title = 'Title';
   year = new Date().getFullYear();
@@ -64,20 +65,21 @@ export class BookComponent implements OnDestroy, OnInit {
           this.currentDairyId = query[0].path;
           // fetch dairy pages
           this.fetchDairy();
+          this.fetchPages();
         }
       },
     });
 
     // console.log(this.activatedRoute.url);
-    for (let pageNo = 1; pageNo <= 10; pageNo++) {
-      this.totalPages.push({
-        pageNo,
-        text: 'Hi',
-        turned: false,
-      });
-    }
+    // for (let pageNo = 1; pageNo <= 10; pageNo++) {
+    //   this.totalPages.push({
+    //     pageNo,
+    //     text: 'Hi',
+    //     turned: false,
+    //   });
+    // }
 
-    this.totalPages = this.totalPages.reverse();
+    // this.totalPages = this.totalPages.reverse();
 
     this.fontsAvailable = this.getAllHtmlFonts;
   }
@@ -98,32 +100,40 @@ export class BookComponent implements OnDestroy, OnInit {
     ];
   }
 
-  // page turn
+  // turn to next page
   onTurnPage(pageDetails: any) {
     console.log('Turn', pageDetails);
-
+    if (this.isUserWriting) {
+      return;
+    }
     if (!pageDetails?.turned) {
       pageDetails.turned = true;
       this.previousTurnedPage = pageDetails.pageNo;
       const page = document.getElementById('page-' + pageDetails.pageNo);
       page?.classList.toggle('turn'); // Toggle the class for page flipping
-    } else {
-      if (this.previousTurnedPage === 1) {
-        this.totalPages.slice(-this.previousTurnedPage)[0].turned = false;
-      } else {
-        this.totalPages.slice(
-          -this.previousTurnedPage,
-          -this.previousTurnedPage + 1
-        )[0].turned = false;
-      }
-      // pageDetails.turned = false;
-      const page = document.getElementById('page-' + this.previousTurnedPage);
-      page?.classList.toggle('turn'); // Toggle the class for page flipping
-      this.previousTurnedPage -= 1;
     }
     console.log(pageDetails);
 
     // this.activePage = pgNo === this.activePage ? pgNo + 1 : pgNo;
+  }
+
+  // turn the previous page
+  onTurnPreviousPage(pageDetails: any) {
+    if (this.isUserWriting || !pageDetails?.turned) {
+      return;
+    }
+    if (this.previousTurnedPage === 1) {
+      this.totalPages.slice(-this.previousTurnedPage)[0].turned = false;
+    } else {
+      this.totalPages.slice(
+        -this.previousTurnedPage,
+        -this.previousTurnedPage + 1
+      )[0].turned = false;
+    }
+    // pageDetails.turned = false;
+    const page = document.getElementById('page-' + this.previousTurnedPage);
+    page?.classList.toggle('turn'); // Toggle the class for page flipping
+    this.previousTurnedPage -= 1;
   }
 
   createDairy() {
@@ -206,6 +216,102 @@ export class BookComponent implements OnDestroy, OnInit {
   closeOldDairy() {
     this.router.navigate(['/books-catalog']);
     this.appService.oldDairySubject.next(false);
+  }
+
+  //  =========================  PAGE DATA  ===========================  //
+  editPage() {
+    this.isUserWriting = !this.isUserWriting;
+  }
+  // Handle user input and apply styles to selected words
+  handleInput(event: Event) {
+    console.log('Selection', event);
+
+    const selection = window.getSelection();
+    if (selection && selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      const selectedNode = range.commonAncestorContainer;
+
+      // Check if the selected node is within the editable word span
+      if (
+        selectedNode.parentElement &&
+        selectedNode.parentElement.classList.contains('editable-word')
+      ) {
+        // Apply font style to the selected word
+        selectedNode.parentElement.style.fontFamily = 'Verdana'; // Change font as needed
+      }
+    }
+  }
+
+  // save a new or old page
+  savePage(pageDetails: any) {
+    if (this.book_loading) {
+      return;
+    }
+
+    this.book_loading = true;
+    const text = document.getElementById('user-text-input')?.innerHTML;
+    const chunky = {
+      text,
+      pageNo: pageDetails.pageNo,
+      bookId: this.currentDairyId,
+    };
+
+    this.appService.savePage(chunky).subscribe({
+      next: (response: any) => {
+        console.log('Page Save Response', response);
+        this.book_loading = false;
+
+        if (response?.success) {
+          pageDetails = response.data;
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      error: () => {
+        this.book_loading = false;
+        this.toastr.error('Ooops!! Try again!');
+      },
+    });
+  }
+
+  // fetching pages in dairy
+  fetchPages() {
+    if (this.book_loading) {
+      return;
+    }
+
+    this.book_loading = true;
+    const chunky = {
+      // pageNo: 1,
+      dairyId: this.currentDairyId,
+    };
+
+    this.appService.pagesFromDairy(chunky).subscribe({
+      next: (response: any) => {
+        console.log('Pages Response', response);
+        this.book_loading = false;
+
+        if (response?.success) {
+          const newPages = [...response.data];
+
+          this.totalPages.unshift(...newPages.reverse());
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      error: (error) => {
+        console.log(error);
+        this.book_loading = false;
+        this.toastr.error('Ooops!! Try again!');
+      },
+    });
+  }
+
+  addNewPage() {
+    this.totalPages.unshift({
+      text: 'Write someting...',
+      pageNo: this.totalPages.length + 1,
+    });
   }
 
   ngOnDestroy() {

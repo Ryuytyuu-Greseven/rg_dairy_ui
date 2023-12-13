@@ -17,6 +17,8 @@ export class AppSettings {
     CREATE_DAIRY: environment.apiUrl + '/users/create',
     FETCH_SELF_DAIRIES: environment.apiUrl + '/users/self-dairies',
     FETCH_DAIRY_DETAILS: environment.apiUrl + '/users/dairy-details',
+    SAVE_PAGE: environment.apiUrl + '/users/save-page',
+    DAIRY_PAGES: environment.apiUrl + '/users/pages',
   };
 
   requestServer(body: any, url: string) {

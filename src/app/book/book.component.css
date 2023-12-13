@@ -411,3 +411,17 @@ input[type="color"] {
   border: 1px solid;
   cursor: pointer;
 }
+
+.edit-page {
+  max-height: 40px;
+  max-width: 40px;
+  padding: 2px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.edit-page i {
+  margin-left: 25%
+}

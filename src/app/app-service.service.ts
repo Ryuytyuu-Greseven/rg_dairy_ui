@@ -45,4 +45,12 @@ export class AppServiceService {
     const url = this.appSettings.APIS.FETCH_DAIRY_DETAILS;
     return this.appSettings.requestServer(body, url);
   }
+  savePage(body: any) {
+    const url = this.appSettings.APIS.SAVE_PAGE;
+    return this.appSettings.requestServer(body, url);
+  }
+  pagesFromDairy(body: any) {
+    const url = this.appSettings.APIS.DAIRY_PAGES;
+    return this.appSettings.requestServer(body, url);
+  }
 }
