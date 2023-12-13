@@ -333,7 +333,7 @@
     /* box-shadow: 0 0 20px rgba(180, 178, 178, 0.1); */
     transform-style: preserve-3d;
     /* Preserves 3D transformations */
-    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    transition: transform 1.5s ease-in-out, opacity 4s ease-in-out;
     /* Smooth transition for page flipping */
     /* position: relative; */
     z-index: 1;

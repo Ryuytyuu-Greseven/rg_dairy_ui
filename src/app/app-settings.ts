@@ -1,12 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, map, tap } from 'rxjs';
 import { environment } from 'src/environments/environement';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppSettings {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   APIS = {
     LOGIN_USER: environment.apiUrl + '/users/login',
@@ -18,6 +20,15 @@ export class AppSettings {
   };
 
   requestServer(body: any, url: string) {
-    return this.httpClient.post(url, body);
+    return this.httpClient.post(url, body).pipe(
+      tap((response: any) => {
+        console.log('response', response);
+        if (response.statusCode === 401) {
+          sessionStorage.clear();
+          this.router.navigate(['/login']);
+        }
+        return response;
+      })
+    );
   }
 }
