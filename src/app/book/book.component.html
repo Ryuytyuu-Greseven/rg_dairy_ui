@@ -27,9 +27,8 @@
         THE END
       </h1>
     </div>
-
-    <button class="create-dairy" (click)="addNewPage()">New
-      Page</button>
+    <button class="previous-page" (click)="onTurnPreviousPage({},0)">Previous Page</button>
+    <button class="create-dairy" (click)="addNewPage()">New Page</button>
   </div>
 
   <!-- STATIC PAGES -->
@@ -49,15 +48,14 @@
           <h2 class="page-no">Page {{pageDetails.pageNo}}</h2>
 
           <!-- <p>Author Name</p> -->
-          <div class="content-log" id="user-text-input" [contentEditable]="isUserWriting"
-            (click)="onTurnPreviousPage(pageDetails)" (input)="handleInput($event)">
+          <div class="content-log" id="user-text-input" [contentEditable]="isUserWriting" (input)="handleInput($event)">
             <p [innerHTML]="pageDetails?.text"></p>
           </div>
 
-          <button class="create-dairy" *ngIf="!isUserWriting" (click)="onTurnPage(pageDetails)">Turn
-            Page</button>
-          <button class="create-dairy" *ngIf="isUserWriting" (click)="savePage(pageDetails)">Save
-            Page</button>
+          <button class="previous-page" *ngIf="!isUserWriting && pageDetails?.pageNo !== 1"
+            (click)="onTurnPreviousPage(pageDetails,ind)">Previous Page</button>
+          <button class="create-dairy" *ngIf="!isUserWriting" (click)="onTurnPage(pageDetails,ind)">Turn Page</button>
+          <button class="create-dairy" *ngIf="isUserWriting" (click)="savePage(pageDetails)">Save Page</button>
 
 
           <!-- <h1>Page 2</h1>

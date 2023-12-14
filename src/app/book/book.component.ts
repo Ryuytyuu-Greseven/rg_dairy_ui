@@ -60,7 +60,7 @@ export class BookComponent implements OnDestroy, OnInit {
       next: (query) => {
         console.log(query);
 
-        if (query.length) {
+        if (query.length && query[0].path) {
           console.log(query[0].path);
           this.currentDairyId = query[0].path;
           // fetch dairy pages
@@ -101,7 +101,7 @@ export class BookComponent implements OnDestroy, OnInit {
   }
 
   // turn to next page
-  onTurnPage(pageDetails: any) {
+  onTurnPage(pageDetails: any, ind: number) {
     console.log('Turn', pageDetails);
     if (this.isUserWriting) {
       return;
@@ -118,8 +118,19 @@ export class BookComponent implements OnDestroy, OnInit {
   }
 
   // turn the previous page
-  onTurnPreviousPage(pageDetails: any) {
-    if (this.isUserWriting || !pageDetails?.turned) {
+  onTurnPreviousPage(pageDetails: any, ind: number) {
+    let previousPageDetails: any = {};
+
+    if (this.previousTurnedPage === 1) {
+      previousPageDetails = this.totalPages.slice(-this.previousTurnedPage)[0];
+    } else {
+      previousPageDetails = this.totalPages.slice(
+        -this.previousTurnedPage,
+        -this.previousTurnedPage + 1
+      )[0];
+    }
+
+    if (this.isUserWriting || !previousPageDetails?.turned) {
       return;
     }
     if (this.previousTurnedPage === 1) {
