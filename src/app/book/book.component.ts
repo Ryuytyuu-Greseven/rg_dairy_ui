@@ -25,6 +25,7 @@ export class BookComponent implements OnDestroy, OnInit {
   totalPages: Array<any> = [];
   previousTurnedPage = 0;
   isUserWriting = false;
+  isDairyClosed = true;
 
   title = 'Title';
   year = new Date().getFullYear();
@@ -60,7 +61,7 @@ export class BookComponent implements OnDestroy, OnInit {
       next: (query) => {
         console.log(query);
 
-        if (query.length && query[0].path) {
+        if (query.length && query[0].path !== 'books-catalog') {
           console.log(query[0].path);
           this.currentDairyId = query[0].path;
           // fetch dairy pages
@@ -100,6 +101,12 @@ export class BookComponent implements OnDestroy, OnInit {
     ];
   }
 
+  // turn to next page
+  openDairy() {
+    const page = document.getElementById('book-open-card');
+    page?.classList.toggle('turn'); // Toggle the class for page flipping
+    this.isDairyClosed = !this.isDairyClosed;
+  }
   // turn to next page
   onTurnPage(pageDetails: any, ind: number) {
     console.log('Turn', pageDetails);

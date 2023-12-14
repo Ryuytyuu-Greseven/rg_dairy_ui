@@ -49,12 +49,6 @@
   box-shadow: 0 0 20px rgba(180, 178, 178, 0.1);
 }
 
-.end-title {
-  font-size: 100px;
-  margin-top: 60%;
-  margin-left: 14%;
-}
-
 /* Basic styles for the book layout */
 .book {
   /* width: 60%; */
@@ -248,6 +242,12 @@
     top: 12%;
     right: 0%;
   }
+
+  .end-title {
+    font-size: 75px;
+    margin-top: 60%;
+    margin-left: 14%;
+  }
 }
 
 
@@ -255,7 +255,7 @@
 /* Media query for larger screens (laptops) */
 @media screen and (min-width: 1025px) and (max-width: 1376px) {
   .book {
-    /* width: 60%; */
+    width: 500px;
     height: 90%;
     margin: auto;
     perspective: 800px;
@@ -322,6 +322,12 @@
     position: absolute;
     top: 12%;
     right: 0%;
+  }
+
+  .end-title {
+    font-size: 75px;
+    margin-top: 60%;
+    margin-left: 14%;
   }
 }
 
@@ -392,6 +398,12 @@
     position: absolute;
     top: 13%;
     right: 13%;
+  }
+
+  .end-title {
+    font-size: 100px;
+    margin-top: 60%;
+    margin-left: 14%;
   }
 }
 

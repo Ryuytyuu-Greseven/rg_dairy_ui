@@ -10,7 +10,7 @@
   margin: 10%;
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 17px 8px 4px rgb(255 255 255 / 10%);
   transition: box-shadow 0.3s ease-in-out;
   background-color: #f9f9f9;
@@ -56,7 +56,7 @@
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .book:hover .overlay {
@@ -84,7 +84,7 @@
 
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
 }

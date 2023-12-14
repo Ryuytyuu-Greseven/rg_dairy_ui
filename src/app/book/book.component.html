@@ -1,13 +1,13 @@
 <div class="book">
 
   <!-- STATIC PAGES -->
-  <div class="page turn"
+  <!-- <div class="page turn" (click)="openDairy()"
     [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6'}"
-    *ngIf="bookType === 'old'">
+    *ngIf="bookType === 'old' && !isDairyClosed">
     <div class="content">
 
     </div>
-  </div>
+  </div> -->
   <div class="page coverpage" [ngStyle]="{'background-color':bgColorSelected}" *ngIf="bookType === 'new'">
     <div class="content">
       <div contenteditable="true" id="book-year" class="book-year" [innerHTML]="year"
@@ -32,7 +32,7 @@
   </div>
 
   <!-- STATIC PAGES -->
-  <ng-container *ngIf="bookType === 'old'">
+  <ng-container *ngIf="bookType === 'old' ">
     <ng-container *ngFor="let pageDetails of totalPages;let ind = index">
       <!-- *ngIf="activePage === ind+1" -->
       <div class="page"
@@ -73,6 +73,19 @@
   </ng-container>
 
 
+
+
+  <div class="page" id="book-open-card" (click)="openDairy()"
+    [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6'}"
+    *ngIf="bookType === 'old'">
+    <div class="content">
+      <div id="book-year" class="book-year" [innerHTML]="year"
+        [ngStyle]="{'font-family':currentFont.font,'color':bgColorSelecetdTitle}"></div>
+      <div id="book-title" class="book-title" [innerHTML]="title"
+        [ngStyle]="{'font-family':currentFont.font,'color':bgColorSelecetdTitle}"></div>
+    </div>
+    <!-- <button class="create-dairy">Open Dairy</button> -->
+  </div>
 
   <!-- Add more pages with the same structure -->
 </div>
