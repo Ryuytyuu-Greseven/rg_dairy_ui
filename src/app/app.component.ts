@@ -36,6 +36,7 @@ export class AppComponent {
 
   logoutUser() {
     sessionStorage.clear();
+    this.appService.userLoggedIn = false;
     this.router.navigate(['/login']);
   }
 }

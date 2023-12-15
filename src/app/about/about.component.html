@@ -10,3 +10,13 @@
     <img src="assets/images/dairy/write_pic_1.jpg" alt="Diaries Image">
   </div>
 </section>
+
+
+<div class="social-media">
+  <ng-container *ngFor="let contact of urlsList; let ind = index">
+    <a [href]="contact?.profileLink" target="_blank"
+      [@contactAnimation]="{ value: '', params: { delay: '5000ms' } }" rel="noopener noreferrer">
+      <i [class]="'fab ' + contact?.icon"></i>
+    </a>
+  </ng-container>
+</div>

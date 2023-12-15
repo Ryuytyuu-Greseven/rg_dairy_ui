@@ -21,9 +21,10 @@
   </div>
 
 
-  <div class="page end-card" *ngIf="bookType === 'old'">
+  <div class="page end-card" [ngStyle]="{'background-color':bgColorSelected ,
+  'color':bgColorSelecetdTitle}" *ngIf="bookType === 'old'">
     <div class="content">
-      <h1 class="end-title">
+      <h1 class="end-title" [ngStyle]="{'font-family':currentDairyDetails?.titleConfig.font}">
         THE END
       </h1>
     </div>
@@ -35,8 +36,8 @@
   <ng-container *ngIf="bookType === 'old' ">
     <ng-container *ngFor="let pageDetails of totalPages;let ind = index">
       <!-- *ngIf="activePage === ind+1" -->
-      <div class="page"
-        [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6'}"
+      <div class="page" [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6',
+        'color':currentDairyDetails?.titleConfig?.color ? currentDairyDetails?.titleConfig?.color : ''}"
         id="page-{{pageDetails.pageNo}}">
         <div class="content">
           <!-- Content for the first page -->
@@ -45,10 +46,12 @@
             <i class="fas fa-pencil-alt"></i>
           </p>
 
-          <h2 class="page-no">Page {{pageDetails.pageNo}}</h2>
+          <h2 class="page-no" [ngStyle]="{'font-family':currentDairyDetails?.titleConfig.font}">Page
+            {{pageDetails.pageNo}}</h2>
 
           <!-- <p>Author Name</p> -->
-          <div class="content-log" id="user-text-input" [contentEditable]="isUserWriting" (input)="handleInput($event)">
+          <div class="content-log" id="user-text-input" [contentEditable]="isUserWriting" (input)="handleInput($event)"
+            [ngStyle]="{'font-family':currentDairyDetails?.titleConfig.font}">
             <p [innerHTML]="pageDetails?.text"></p>
           </div>
 
@@ -74,15 +77,15 @@
 
 
 
-
+  <!-- THIS IS CARD OPEN COVER PAGE -->
   <div class="page" id="book-open-card" (click)="openDairy()"
-    [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6'}"
+    [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6','color':currentDairyDetails?.titleConfig?.color ? currentDairyDetails?.titleConfig?.color : ''}"
     *ngIf="bookType === 'old'">
     <div class="content">
       <div id="book-year" class="book-year" [innerHTML]="year"
-        [ngStyle]="{'font-family':currentFont.font,'color':bgColorSelecetdTitle}"></div>
+        [ngStyle]="{'font-family':currentDairyDetails?.titleConfig.font,'color':bgColorSelecetdTitle}"></div>
       <div id="book-title" class="book-title" [innerHTML]="title"
-        [ngStyle]="{'font-family':currentFont.font,'color':bgColorSelecetdTitle}"></div>
+        [ngStyle]="{'font-family':currentDairyDetails?.titleConfig.font,'color':bgColorSelecetdTitle}"></div>
     </div>
     <!-- <button class="create-dairy">Open Dairy</button> -->
   </div>

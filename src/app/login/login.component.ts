@@ -126,6 +126,7 @@ export class LoginComponent {
           this.toastr.success(response.message);
           this.loginForm.reset();
           this.router.navigateByUrl('/books-catalog');
+          this.appService.userLoggedIn = true;
         } else {
           this.toastr.error(response.message);
         }
