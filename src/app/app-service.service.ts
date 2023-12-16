@@ -29,6 +29,15 @@ export class AppServiceService {
     const url = this.appSettings.APIS.SIGNUP_USER;
     return this.appSettings.requestServer(body, url);
   }
+  verifyUser(body: any) {
+    const url = this.appSettings.APIS.VERIFY_USER;
+    return this.appSettings.requestServer(body, url);
+  }
+  resendOtp(body: any) {
+    const url = this.appSettings.APIS.RESEND_OTP;
+    return this.appSettings.requestServer(body, url);
+  }
+
   userDetails(body: any) {
     const url = this.appSettings.APIS.FETCH_USER_DETAILS;
     return this.appSettings.requestServer(body, url);

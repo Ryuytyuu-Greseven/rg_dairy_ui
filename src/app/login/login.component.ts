@@ -14,12 +14,16 @@ export class LoginComponent {
 
   // login type
   activePage = 1;
-  enableLogin = true;
+  loginMode = 'login';
 
   loginForm!: FormGroup;
   signupForm!: FormGroup;
+  otpForm!: FormGroup;
   emailRegex =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  // user id
+  userIdToProcess = '';
 
   // signup/login process
   singup_loading = false;
@@ -73,6 +77,13 @@ export class LoginComponent {
       ],
     });
 
+    this.otpForm = this.formbuilder.group({
+      otp1: ['', Validators.required],
+      otp2: ['', Validators.required],
+      otp3: ['', Validators.required],
+      otp4: ['', Validators.required],
+    });
+
     document.querySelectorAll('.page').forEach((page) => {
       page.addEventListener('click', () => {
         page.classList.toggle('turn'); // Toggle the class for page flipping
@@ -81,14 +92,14 @@ export class LoginComponent {
   }
 
   // login type switch
-  switchLogin() {
-    this.enableLogin = !this.enableLogin;
+  switchToLogin() {
+    this.loginMode = 'login';
     this.signupForm.reset();
     this.signupForm.updateValueAndValidity();
   }
 
   switchToSignUp() {
-    this.enableLogin = !this.enableLogin;
+    this.loginMode = 'signup';
     this.loginForm.reset();
     this.loginForm.updateValueAndValidity();
   }
@@ -165,8 +176,9 @@ export class LoginComponent {
         console.log('Login Response', response);
         this.singup_loading = false;
         if (response?.success) {
-          this.toastr.success(response.message);
-          this.enableLogin = true;
+          this.userIdToProcess = response.userId;
+          // this.toastr.success(response.message);
+          this.loginMode = 'otp';
           this.signupForm.reset();
         } else {
           this.toastr.error(response.message);
@@ -176,6 +188,78 @@ export class LoginComponent {
         console.log(error);
         this.singup_loading = false;
         this.toastr.error('Unable to create an account.');
+      },
+    });
+  }
+
+  onVerifyOtp() {
+    if (this.otpForm.valid) {
+      this.verifySignUp();
+    }
+  }
+
+  verifySignUp() {
+    if (this.singup_loading) {
+      return;
+    }
+
+    this.singup_loading = true;
+    let otp = '';
+    for (const formControl in this.otpForm.controls) {
+      otp += this.otpForm.value[formControl];
+    }
+
+    const chunky = {
+      userId: this.userIdToProcess,
+      otp: otp,
+    };
+
+    this.appService.verifyUser(chunky).subscribe({
+      next: (response: any) => {
+        console.log('Login Response', response);
+        this.singup_loading = false;
+        if (response?.success) {
+          this.toastr.success(response.message);
+          this.loginMode = 'login';
+          this.otpForm.reset();
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      error: (error: any) => {
+        console.log(error);
+        this.singup_loading = false;
+        this.toastr.error('Unable to verify an account.');
+      },
+    });
+  }
+
+  requestOTP() {
+    if (this.singup_loading) {
+      return;
+    }
+
+    this.singup_loading = true;
+    const chunky = {
+      userId: this.userIdToProcess,
+    };
+
+    this.appService.resendOtp(chunky).subscribe({
+      next: (response: any) => {
+        console.log('Login Response', response);
+        this.singup_loading = false;
+        if (response?.success) {
+          this.toastr.success(response.message);
+          this.otpForm.reset();
+          this.signupForm.reset();
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      error: (error: any) => {
+        console.log(error);
+        this.singup_loading = false;
+        this.toastr.error('Unable to resend otp.');
       },
     });
   }

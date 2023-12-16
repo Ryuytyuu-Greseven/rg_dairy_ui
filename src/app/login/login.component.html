@@ -1,6 +1,8 @@
 <div class="container" *ngIf="!animationInProcess">
   <div class="login-left">
-    <div class="form-container login-border" *ngIf="enableLogin">
+
+    <!-- login form -->
+    <div class="form-container login-border" *ngIf="loginMode === 'login'">
       <h2 class="signup-head">Login</h2>
       <form [formGroup]="loginForm">
 
@@ -36,7 +38,8 @@
       </form>
     </div>
 
-    <div class="form-container login-border" *ngIf="!enableLogin">
+    <!-- signup form -->
+    <div class="form-container login-border" *ngIf="loginMode === 'signup'">
       <h2 class="signup-head">Sign Up</h2>
       <form [formGroup]="signupForm">
         <label class="singup-label">Profile Name</label>
@@ -87,13 +90,32 @@
 
         <div class="switch-buttons">
           <button class="switch-button1" (click)="onClickSignup()">Sign Up</button>
-          <button class="switch-button2" (click)="switchToSignUp()">Switch</button>
+          <button class="switch-button2" (click)="switchToLogin()">Switch</button>
         </div>
         <!--
     <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Sign Up</button>
     <button mat-raised-button color="primary" (click)="switchLogin()">Login</button> -->
 
       </form>
+    </div>
+
+    <!-- verify otp -->
+    <div class="form-container login-border" *ngIf="loginMode === 'otp'">
+      <h2 class="signup-head">OTP Verification</h2>
+      <p class="singup-label">Please enter the OTP sent to your email:</p>
+      <form [formGroup]="otpForm">
+        <div class="otp-inputs">
+          <input type="text" class="otp-input" formControlName="otp1" maxlength="1">
+          <input type="text" class="otp-input" formControlName="otp2" maxlength="1">
+          <input type="text" class="otp-input" formControlName="otp3" maxlength="1">
+          <input type="text" class="otp-input" formControlName="otp4" maxlength="1">
+        </div>
+
+        <div class="switch-buttons">
+          <button class="switch-button1" (click)="onVerifyOtp()">Verify</button>
+        </div>
+      </form>
+      <p class="resend">Didn't receive the code? <a class="resend-btn" (click)="requestOTP()">Resend OTP</a></p>
     </div>
   </div>
 
