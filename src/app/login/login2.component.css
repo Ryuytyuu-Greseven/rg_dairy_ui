@@ -125,6 +125,7 @@
 
   .login-left {
     width: 100%;
+    margin-left: 0px;
   }
 
   .login-right {
