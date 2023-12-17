@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css'],
+  styleUrls: ['./book.component.css', 'book2.component.css'],
 })
 export class BookComponent implements OnDestroy, OnInit {
   // current book
