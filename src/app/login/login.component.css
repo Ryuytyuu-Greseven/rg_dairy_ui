@@ -298,6 +298,61 @@ button[type="submit"]:hover {
   }
 }
 
+/* Mobile devices */
+
+@media screen and (min-width: 400px) and (max-width:768px) {
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+
+  .clip-logo {
+    padding: 50px;
+    line-height: 0.5;
+    text-align: center;
+    font-weight: 800;
+    /* margin-top: 50%; */
+
+    font-size: 6.0em;
+    text-transform: uppercase;
+    font-family: 'Open Sans Pro', sans-serif;
+    background: url('../../assets//images//backrgounds//logo_bg.jpg');
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .login-left {
+    width: 100%;
+  }
+
+  .login-right {
+    width: 100%;
+  }
+
+
+  .resize-logo {
+    font-size: 5px;
+    margin-top: 50%;
+
+    animation: textAnimationa 0 normal;
+    /* Change the duration as needed */
+  }
+
+  @keyframes textAnimationa {
+    from {
+      font-size: 2px;
+    }
+
+    to {
+      font-size: 7.0em;
+      /* Change this to the final size */
+    }
+  }
+}
 
 
 /* TEXT TRANSFORMATION */

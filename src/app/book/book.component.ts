@@ -20,6 +20,7 @@ export class BookComponent implements OnDestroy, OnInit {
   // current book
   currentDairyId = '';
   currentDairyDetails: any = {};
+  disableBookActions = false;
 
   // pages
   totalPages: Array<any> = [];
@@ -154,6 +155,18 @@ export class BookComponent implements OnDestroy, OnInit {
     this.previousTurnedPage -= 1;
   }
 
+  // toggle the layers
+  toggleCustomizationLayers() {
+    console.log('Toggle Layers');
+    const layers = document.getElementById('custom-layers-toggle');
+    layers?.classList.toggle('custom-layers-toggle-open');
+    this.disableBookActions = !this.disableBookActions;
+
+    const layer2 = document.getElementById('book-card');
+    layer2?.classList.toggle('book-freeze');
+  }
+
+  // create a new dairy
   createDairy() {
     if (this.book_loading) {
       return;

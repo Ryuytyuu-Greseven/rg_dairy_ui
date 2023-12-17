@@ -103,3 +103,17 @@
   text-decoration: dotted;
   margin-top: 50%
 }
+
+
+/* Mobile devices */
+
+@media screen and (min-width: 400px) and (max-width:768px) {
+
+  .book-grid {
+    display: grid;
+    margin: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-left: 22%;
+  }
+}

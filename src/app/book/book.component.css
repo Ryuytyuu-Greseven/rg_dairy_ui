@@ -169,6 +169,12 @@
   color: #E0C9A6;
 }
 
+.layers-icon {
+  opacity: 0;
+  z-index: -20;
+  color: rgb(255, 255, 255);
+}
+
 
 /* Styles for screens up to 1024px */
 /* Media query for larger screens (laptops) */
@@ -178,14 +184,14 @@
     height: 90%;
     margin: auto;
     perspective: 800px;
-    margin-left: 50%;
+    margin-left: 40%;
     margin-top: 0%;
     /* Adds depth to the book */
   }
 
   .page {
-    width: 90%;
-    height: 65%;
+    width: 70%;
+    height: 600px;
     color: black;
     /* Height of the pages */
 
@@ -215,13 +221,21 @@
   /* FONTS PREVIEW */
   .font-list {
     position: absolute;
-    right: 5%;
-    top: 30%;
-
+    right: 6%;
+    top: 250px;
+    margin-right: 1%;
     max-height: 310px;
-    /* Set the maximum height for scroll */
     overflow-y: auto;
-    /* Enable vertical scroll */
+
+    background-color: #181818;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .font-list::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none
+      /* Webkit (Chrome, Safari, etc.) */
   }
 
   .font-preview {
@@ -230,11 +244,15 @@
     text-align: center;
     margin-bottom: 10px;
     border-radius: 20px;
+    margin-top: 7px;
   }
 
   .color-picker {
-    right: 15%;
-    top: 11%;
+    background-color: transparent;
+    right: 6%;
+    display: flex;
+    gap: 40px;
+    top: 175px;
   }
 
   .close-old-dairy {
@@ -247,6 +265,7 @@
     font-size: 75px;
     margin-top: 60%;
     margin-left: 14%;
+    line-height: 1;
   }
 }
 
@@ -265,7 +284,7 @@
   }
 
   .page {
-    width: 90%;
+    width: 400px;
     height: 65%;
     color: black;
     /* Height of the pages */
@@ -296,13 +315,21 @@
   /* FONTS PREVIEW */
   .font-list {
     position: absolute;
-    right: 5%;
-    top: 25%;
-
+    right: 6%;
+    top: 250px;
+    margin-right: 1%;
     max-height: 310px;
-    /* Set the maximum height for scroll */
     overflow-y: auto;
-    /* Enable vertical scroll */
+
+    background-color: #181818;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .font-list::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none
+      /* Webkit (Chrome, Safari, etc.) */
   }
 
   .font-preview {
@@ -311,11 +338,15 @@
     text-align: center;
     margin-bottom: 10px;
     border-radius: 20px;
+    margin-top: 7px;
   }
 
   .color-picker {
-    right: 15%;
-    top: 11%;
+    background-color: transparent;
+    right: 6%;
+    display: flex;
+    gap: 40px;
+    top: 175px;
   }
 
   .close-old-dairy {
@@ -328,6 +359,7 @@
     font-size: 75px;
     margin-top: 60%;
     margin-left: 14%;
+    line-height: 1;
   }
 }
 
@@ -366,13 +398,14 @@
   .font-list {
     position: absolute;
     right: 5%;
-    top: 25%;
-    margin-right: 15%;
-
+    top: 250px;
+    margin-right: 1%;
     max-height: 310px;
-    /* Set the maximum height for scroll */
     overflow-y: auto;
-    /* Enable vertical scroll */
+
+    background-color: #181818;
+    padding: 5px;
+    border-radius: 10px;
   }
 
   .font-list::-webkit-scrollbar {
@@ -387,11 +420,15 @@
     text-align: center;
     margin-bottom: 10px;
     border-radius: 20px;
+    margin-top: 7px;
   }
 
   .color-picker {
-    right: 10%;
-    top: 11%;
+    background-color: transparent;
+    right: 5%;
+    display: flex;
+    gap: 40px;
+    top: 175px;
   }
 
   .close-old-dairy {
@@ -404,6 +441,153 @@
     font-size: 100px;
     margin-top: 60%;
     margin-left: 14%;
+  }
+}
+
+/* Mobile devices */
+
+@media screen and (min-width: 400px) and (max-width:768px) {
+
+  /* Basic styles for the book layout */
+  .book {
+    /* width: 60%; */
+    height: 75%;
+    margin: auto;
+    perspective: 1000px;
+    margin-left: 30%;
+    margin-top: 10%;
+    /* Adds depth to the book */
+  }
+
+  .book-freeze {
+    position: relative;
+    z-index: -10;
+  }
+
+  .page {
+    /* Height of the pages */
+    height: 75%;
+    width: 400px;
+
+    /* coolrs */
+    background-color: #E0C9A6;
+    color: black;
+    font-size: large;
+    line-height: 1.4;
+
+    /* border */
+    border-radius: 25px;
+
+    /* box-shadow: 0 0 20px rgba(180, 178, 178, 0.1); */
+    transform-style: preserve-3d;
+    /* Preserves 3D transformations */
+    transition: transform 1.5s ease-in-out, opacity 3s ease-in-out;
+    /* Smooth transition for page flipping */
+    /* position: relative; */
+    z-index: 1;
+
+    /* stack papers */
+    position: absolute;
+    /* box-shadow: 0 10px 34px white; */
+  }
+
+
+  /* FONTS PREVIEW */
+  .font-list {
+    position: absolute;
+    /* right: 25px; */
+    top: 250px;
+    margin-right: 7%;
+    max-height: 310px;
+    overflow-y: auto;
+
+    background-color: #181818;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .font-list-mobile {
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #181818;
+  }
+
+  .font-list::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none
+      /* Webkit (Chrome, Safari, etc.) */
+  }
+
+  .font-preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    margin-top: 7px;
+  }
+
+  .color-picker {
+    background-color: transparent;
+    right: 25px;
+    display: flex;
+    gap: 40px;
+    top: 175px;
+  }
+
+  .picker-title {
+    right: 9%;
+  }
+
+  .close-old-dairy {
+    position: absolute;
+    top: 13%;
+    right: 13%;
+  }
+
+  .end-title {
+    font-size: 100px;
+    margin-top: 60%;
+    margin-left: 14%;
+  }
+
+  .layers-icon {
+    cursor: pointer;
+    opacity: 1;
+    z-index: 0;
+    color: rgb(0 0 0);
+    right: -20px;
+    top: 100px;
+    font-size: 25px;
+    background-color: wheat;
+    padding: 4px;
+    border-radius: 4px;
+  }
+
+  .custom-layers-toggle {
+    opacity: 0;
+    position: fixed;
+    z-index: -20;
+  }
+
+  .custom-layers-toggle-open {
+    opacity: 1;
+    position: static;
+    z-index: 0;
+  }
+
+  .custom-layers-toggle-open>*:nth-child(n) {
+    animation: layersAnimation 1s ease forwards;
+  }
+
+  @keyframes layersAnimation {
+    0% {
+      right: -25px;
+    }
+
+    100% {
+      right: 25px
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-<mat-toolbar class="dash-header">
+<mat-toolbar class="dash-header" *ngIf="appService.userLoggedIn">
   <button mat-icon-button (click)="toggleSidenav()">
     <mat-icon>menu</mat-icon>
   </button>

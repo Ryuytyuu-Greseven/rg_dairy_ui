@@ -1,4 +1,4 @@
-<div class="book">
+<div class="book" id="book-card">
 
   <!-- STATIC PAGES -->
   <!-- <div class="page turn" (click)="openDairy()"
@@ -96,24 +96,31 @@
 
 
 <ng-container *ngIf="bookType === 'new'">
-  <div class="font-list">
-    <ng-container *ngFor="let font of fontsAvailable">
-      <div class="font-preview" [ngStyle]="{'font-family': font?.font}" (click)="applyFont(font)">{{font?.title}}
-      </div>
-    </ng-container>
+  <div id="custom-layers-toggle" class="custom-layers-toggle">
+    <div class="font-list font-list-mobile">
+      <ng-container *ngFor="let font of fontsAvailable">
+        <div class="font-preview" [ngStyle]="{'font-family': font?.font}" (click)="applyFont(font)">{{font?.title}}
+        </div>
+      </ng-container>
 
-    <!-- <div class="font-preview" style="font-family: Arial;">Arial</div>
-    <div class="font-preview" style="font-family: 'Times New Roman';">Times New Roman</div>
-    <div class="font-preview" style="font-family: Verdana;">Verdana</div>
-    <div class="font-preview" style="font-family: Georgia;">Georgia</div>
-    <div class="font-preview" style="font-family: 'Courier New';">Courier New</div> -->
-    <!-- Add more font types as needed -->
-  </div>
+      <!-- <div class="font-preview" style="font-family: Arial;">Arial</div>
+      <div class="font-preview" style="font-family: 'Times New Roman';">Times New Roman</div>
+      <div class="font-preview" style="font-family: Verdana;">Verdana</div>
+      <div class="font-preview" style="font-family: Georgia;">Georgia</div>
+      <div class="font-preview" style="font-family: 'Courier New';">Courier New</div> -->
+      <!-- Add more font types as needed -->
+    </div>
 
-  <div class="font-list color-picker">
-    <input type="color" id="colorPicker" (input)="onColorPickedBook($event)">
-  </div>
-  <div class="font-list color-picker picker-title">
-    <input type="color" id="colorPicker" (input)="onColorPickedTitle($event)">
+    <div class="font-list color-picker">
+      <input type="color" id="colorPicker" (input)="onColorPickedBook($event)">
+      <input type="color" id="colorPicker" (input)="onColorPickedTitle($event)">
+    </div>
+    <!-- <div class="font-list color-picker picker-title">
+      <input type="color" id="colorPicker" (input)="onColorPickedTitle($event)">
+    </div> -->
   </div>
 </ng-container>
+
+<div class="font-list layers-icon" (click)="toggleCustomizationLayers()">
+  <i class="fas fa-layer-group"></i>
+</div>
