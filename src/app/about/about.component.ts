@@ -30,39 +30,5 @@ import {
   ],
 })
 export class AboutComponent {
-  urlsList: contactProfile[];
-
-  constructor() {
-    this.urlsList = this.allProfilesList;
-  }
-
-  get allProfilesList(): contactProfile[] {
-    return [
-      {
-        profileLink: 'https://github.com/Ryuytyuu-Greseven',
-        icon: 'fa-github',
-        portal: 'github',
-      },
-      {
-        profileLink: 'https://www.linkedin.com/in/ryuytyuu-greseven',
-        icon: 'fa-linkedin',
-        portal: 'linkedin',
-      },
-      {
-        profileLink: 'https://www.instagram.com/ryuytyuu_greseven',
-        icon: 'fa-instagram',
-        portal: 'instagram',
-      },
-      {
-        profileLink: 'https://twitter.com/Ryuytyuu',
-        icon: 'fa-twitter-square',
-        portal: 'twitter',
-      },
-      {
-        profileLink: 'https://www.reddit.com/user/Critical_Pianist_947',
-        icon: 'fa-reddit-alien',
-        portal: 'reddit',
-      },
-    ];
-  }
+  constructor() {}
 }

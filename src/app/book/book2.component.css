@@ -286,6 +286,10 @@
     z-index: -10;
   }
 
+  .adjust-book-mobile {
+    margin-left: 8%;
+  }
+
   .page {
     /* Height of the pages */
     height: 75%;
@@ -363,8 +367,8 @@
 
   .close-old-dairy {
     position: absolute;
-    top: 13%;
-    right: 13%;
+    top: 11%;
+    right: 1%;
   }
 
   .end-title {

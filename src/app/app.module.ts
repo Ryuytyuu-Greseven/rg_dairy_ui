@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
 import { AboutComponent } from './about/about.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { SocialMediaComponent } from './social-media/social-media.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     LoginComponent,
     BooksCatalogComponent,
     AboutComponent,
+    SocialMediaComponent,
   ],
   imports: [
     BrowserModule,

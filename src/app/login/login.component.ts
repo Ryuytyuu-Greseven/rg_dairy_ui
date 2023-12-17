@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css', 'login2.component.css'],
+  styleUrls: ['./login.component.css', './login2.component.css'],
 })
 export class LoginComponent {
   // ====================================  START  ====================================  //

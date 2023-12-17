@@ -49,6 +49,28 @@
 }
 
 
+@media screen and (min-width: 400px) and (max-width:768px) {
+  .catalog-details {
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 3%;
+    height: 280px;
+  }
+
+  .catalog-info h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .images-container img {
+    width: 150px;
+    margin: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
 @media screen and (max-width:1024px) {
   .catalog-details {
     padding: 50px 0;
@@ -64,50 +86,5 @@
     text-align: center;
     margin-top: 5%;
     height: 370px;
-  }
-}
-
-
-.social-media {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  /* Adjust spacing */
-}
-
-.social-media a {
-  text-decoration: none;
-  /* color: #333; */
-  /* Icon color */
-  font-size: 24px;
-  margin: 0 10px;
-  transition: transform 0.3s ease-in-out;
-
-  animation: contactAnimation 1.5s ease-in-out infinite;
-}
-
-.social-media a:hover {
-  transform: translateY(-15px);
-  /* Adjust the hover effect */
-  color: #b12900;
-  /* Change color on hover */
-}
-
-@keyframes contactAnimation {
-  0%, 100% {
-    transform: translateY(0px);
-    /* Adjust the hover effect */
-    color: #333;
-    /* Change color on hover */
-  }
-
-  50% {
-    transform: translateY(-25px);
-
-    /* Adjust the hover effect */
-    color: #b12900;
-
-    /* Change color on hover */
   }
 }

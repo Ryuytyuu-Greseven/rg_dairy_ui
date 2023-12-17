@@ -1,4 +1,4 @@
-<div class="book" id="book-card">
+<div class="book" id="book-card" [ngClass]="{'adjust-book-mobile':bookType === 'old'}">
 
   <!-- STATIC PAGES -->
   <!-- <div class="page turn" (click)="openDairy()"
@@ -121,6 +121,6 @@
   </div>
 </ng-container>
 
-<div class="font-list layers-icon" (click)="toggleCustomizationLayers()">
+<div class="font-list layers-icon" *ngIf="bookType === 'new'" (click)="toggleCustomizationLayers()">
   <i class="fas fa-layer-group"></i>
 </div>
