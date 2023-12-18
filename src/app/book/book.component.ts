@@ -234,6 +234,8 @@ export class BookComponent implements OnDestroy, OnInit {
 
         if (response?.success) {
           this.currentDairyDetails = response.data;
+          this.title = this.currentDairyDetails.title;
+          this.year = this.currentDairyDetails.year;
           this.bgColorSelected = this.currentDairyDetails.bookConfig.color;
           this.bgColorSelecetdTitle =
             this.currentDairyDetails.titleConfig.color;

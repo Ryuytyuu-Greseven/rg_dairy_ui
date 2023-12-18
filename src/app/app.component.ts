@@ -4,6 +4,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AppServiceService } from './app-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environement';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,11 @@ export class AppComponent {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (environment.production) {
+      console.log = () => {};
+    }
+  }
 
   isScreenSmall(): boolean {
     return this.breakpointObserver.isMatched('(max-width: 768px)');
