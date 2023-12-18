@@ -4,15 +4,16 @@
     line-height: 0.5;
     text-align: center;
     font-weight: 800;
-    margin-top: 20%;
+    margin-top: 250px;
+    letter-spacing: 12px;
 
     font-size: 9.0em;
     text-transform: uppercase;
     font-family: 'Open Sans Pro', sans-serif;
-    background: url('../../assets//images//backrgounds//logo_bg.jpg');
+    /* background: url('../../assets//images//backrgounds//logo_bg.jpg');
     background-size: cover;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
   }
 
   .login-left {
@@ -53,15 +54,16 @@
     line-height: 0.5;
     text-align: center;
     font-weight: 800;
-    margin-top: 20%;
+    margin-top: 250px;
+    letter-spacing: 12px;
 
     font-size: 8.0em;
     text-transform: uppercase;
     font-family: 'Open Sans Pro', sans-serif;
-    background: url('../../assets//images//backrgounds//logo_bg.jpg');
+    /* background: url('../../assets//images//backrgounds//logo_bg.jpg');
     background-size: cover;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
   }
 
   .login-left {
@@ -112,15 +114,16 @@
     line-height: 0.5;
     text-align: center;
     font-weight: 800;
+    letter-spacing: 15px;
     /* margin-top: 50%; */
 
     font-size: 6.0em;
     text-transform: uppercase;
     font-family: 'Open Sans Pro', sans-serif;
-    background: url('../../assets//images//backrgounds//logo_bg.jpg');
+    /* background: url('../../assets//images//backrgounds//logo_bg.jpg');
     background-size: cover;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; */
   }
 
   .login-left {
