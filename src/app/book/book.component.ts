@@ -29,7 +29,7 @@ export class BookComponent implements OnDestroy, OnInit {
   isDairyClosed = true;
 
   title = 'Title';
-  year = new Date().getFullYear();
+  year =`${new Date().getFullYear()}`;
 
   // requests loading
   book_loading = false;
@@ -66,6 +66,9 @@ export class BookComponent implements OnDestroy, OnInit {
           console.log(query[0].path);
           this.currentDairyId = query[0].path;
           // fetch dairy pages
+          this.title = 'Loading . . .';
+          this.year = '';
+          this.bookType = 'old';
           this.fetchDairy();
           this.fetchPages();
         }

@@ -33,12 +33,6 @@ export class AppComponent {
     return this.breakpointObserver.isMatched('(max-width: 768px)');
   }
 
-  toggleSidenav(): void {
-    // Toggle the side nav when the menu button is clicked
-    // Adjust this method based on your needs
-    // For example, you might want to use Angular Router to navigate
-  }
-
   logoutUser() {
     sessionStorage.clear();
     this.appService.userLoggedIn = false;
