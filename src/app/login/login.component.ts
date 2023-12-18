@@ -121,7 +121,7 @@ export class LoginComponent {
 
     this.singup_loading = true;
     const chunky = {
-      username: this.loginForm.value.username,
+      username: `${this.loginForm.value.username}`.toLowerCase(),
       password: this.loginForm.value.password,
     };
 
@@ -165,9 +165,9 @@ export class LoginComponent {
     }
     this.singup_loading = true;
     const chunky = {
-      username: this.signupForm.value.username,
-      password: this.signupForm.value.password,
-      email: this.signupForm.value.email,
+      username: `${this.signupForm.value.username}`.toLowerCase(),
+      password: `this.signupForm.value.password`,
+      email: `${this.signupForm.value.email}`.toLowerCase(),
       profilename: this.signupForm.value.profilename,
     };
 
