@@ -11,9 +11,9 @@
   <div class="page coverpage" [ngStyle]="{'background-color':bgColorSelected}" *ngIf="bookType === 'new'">
     <div class="content">
       <div contenteditable="true" id="book-year" class="book-year" [innerHTML]="year"
-        [ngStyle]="{'font-family':currentFont?.font,'color':bgColorSelecetdTitle}"></div>
+        [ngStyle]="{'font-family':currentFont.font,'color':bgColorSelecetdTitle}"></div>
       <div contenteditable="true" id="book-title" class="book-title" [innerHTML]="title"
-        [ngStyle]="{'font-family':currentFont?.font,'color':bgColorSelecetdTitle}"></div>
+        [ngStyle]="{'font-family':currentFont.font,'color':bgColorSelecetdTitle}"></div>
       <!-- <input type="text" class="book-title" minlength="1" maxlength="25"> -->
     </div>
     <button class="create-dairy close-dairy" (click)="closeDairy()">Close</button>
