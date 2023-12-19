@@ -8,7 +8,8 @@
 
         <label class="singup-label">User Name</label>
 
-        <input class="form-group" formControlName="username" (keyup)="replaceSpace($event)">
+        <input class="form-group" formControlName="username" #username1 [value]="username1.value| lowercase"
+          (keyup)="replaceSpace($event)">
         <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
           <ng-container *ngIf="loginForm.get('username')?.hasError('required')">Username is required
           </ng-container>
@@ -57,7 +58,8 @@
 
 
         <label class="singup-label">User Name</label>
-        <input class="form-group" formControlName="username" (keyup)="replaceSpace($event)">
+        <input class="form-group" formControlName="username" #username2 [value]="username2.value| lowercase"
+          (keyup)="replaceSpace($event)">
         <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
           <ng-container *ngIf="signupForm.get('username')?.hasError('required')">User name is required</ng-container>
           <ng-container *ngIf="signupForm.get('username')?.hasError('exists')">User name already exists!</ng-container>
