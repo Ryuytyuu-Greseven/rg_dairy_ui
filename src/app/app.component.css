@@ -46,12 +46,11 @@ body {
   /* Light label color */
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="password"],
 input[type="email"] {
   color: #ffffff;
-  /* Light input text color */
-}
+} */
 
 button[type="submit"] {
   padding: 10px 20px;

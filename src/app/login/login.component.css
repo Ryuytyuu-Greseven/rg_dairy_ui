@@ -13,7 +13,7 @@
 .form-group {
   border-radius: 20px;
   padding: 5px;
-  padding-right: 50%;
+  width: 75%;
   background-color: black;
   color: wheat;
   margin-bottom: 10px;
@@ -47,12 +47,11 @@
   /* Light label color */
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="password"],
 input[type="email"] {
   color: #ffffff;
-  /* Light input text color */
-}
+} */
 
 button[type="submit"] {
   padding: 10px 20px;

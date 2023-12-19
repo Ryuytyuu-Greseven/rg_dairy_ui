@@ -4,6 +4,7 @@ import { AppServiceService } from '../app-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 
+declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -273,6 +274,19 @@ export class LoginComponent {
     //   username: newValue,
     // });
     // this.signupForm.updateValueAndValidity();
+  }
+
+  //  ===================  OTP  =====================  //
+  switchOtp(otpInput: number) {
+    $(`#otp-${otpInput}`).focus();
+  }
+
+  //  ================  EVENTS  ==================  //
+  spaceValidation(event: any) {
+    if(event.target.value.charCodeAt() === 32){
+      return false;
+    }
+    return event;
   }
 
   adjustFontSize(finalSize: any) {

@@ -69,7 +69,7 @@
 
         <label class="singup-label">Email</label>
 
-        <input class="form-group" formControlName="email">
+        <input class="form-group" formControlName="email" (keyup)="spaceValidation($event)">
         <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
           <ng-container *ngIf="signupForm.get('email')?.hasError('required')">Email is required</ng-container>
           <ng-container *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email</ng-container>
@@ -107,10 +107,10 @@
       <p class="singup-label">Please enter the OTP sent to your email:</p>
       <form [formGroup]="otpForm">
         <div class="otp-inputs">
-          <input type="text" class="otp-input" formControlName="otp1" maxlength="1">
-          <input type="text" class="otp-input" formControlName="otp2" maxlength="1">
-          <input type="text" class="otp-input" formControlName="otp3" maxlength="1">
-          <input type="text" class="otp-input" formControlName="otp4" maxlength="1">
+          <input type="text" id="otp-1" class="otp-input" formControlName="otp1" maxlength="1" (input)="switchOtp(2)">
+          <input type="text" id="otp-2" class="otp-input" formControlName="otp2" maxlength="1" (input)="switchOtp(2)">
+          <input type="text" id="otp-3" class="otp-input" formControlName="otp3" maxlength="1" (input)="switchOtp(3)">
+          <input type="text" id="otp-4" class="otp-input" formControlName="otp4" maxlength="1">
         </div>
 
         <div class="switch-buttons">
