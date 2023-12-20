@@ -9,20 +9,24 @@ import { environment } from 'src/environments/environement';
   providedIn: 'root',
 })
 export class AppSettings {
+  globalUrl = environment.apiUrl;
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   APIS = {
-    LOGIN_USER: environment.apiUrl + '/users/login',
-    SIGNUP_USER: environment.apiUrl + '/users/signup',
-    VERIFY_USER: environment.apiUrl + '/users/verify',
-    RESEND_OTP: environment.apiUrl + '/users/resend_otp',
+    LOGIN_USER: this.globalUrl + '/users/login',
+    SIGNUP_USER: this.globalUrl + '/users/signup',
+    VERIFY_USER: this.globalUrl + '/users/verify',
+    RESEND_OTP: this.globalUrl + '/users/resend_otp',
 
-    FETCH_USER_DETAILS: environment.apiUrl + '/user/details',
-    CREATE_DAIRY: environment.apiUrl + '/users/create',
-    FETCH_SELF_DAIRIES: environment.apiUrl + '/users/self-dairies',
-    FETCH_DAIRY_DETAILS: environment.apiUrl + '/users/dairy-details',
-    SAVE_PAGE: environment.apiUrl + '/users/save-page',
-    DAIRY_PAGES: environment.apiUrl + '/users/pages',
+    FETCH_USER_DETAILS: this.globalUrl + '/user/details',
+    CREATE_DAIRY: this.globalUrl + '/users/create',
+    FETCH_SELF_DAIRIES: this.globalUrl + '/users/self-dairies',
+    FETCH_DAIRY_DETAILS: this.globalUrl + '/users/dairy-details',
+    SAVE_PAGE: this.globalUrl + '/users/save-page',
+    DAIRY_PAGES: this.globalUrl + '/users/pages',
+
+    // password reset
+    REQUEST_PASS_RESET: this.globalUrl + '/users/pass_reset',
   };
 
   requestServer(body: any, url: string) {

@@ -37,6 +37,9 @@
         <!-- <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Login</button>
     <button mat-raised-button color="primary" (click)="switchToSignUp()">Sign UP</button> -->
       </form>
+      <p class="resend">
+        <a class="resend-btn" (click)="onClickForgotPass()">Forgot Password</a>
+      </p>
     </div>
 
     <!-- signup form -->
@@ -102,7 +105,7 @@
     </div>
 
     <!-- verify otp -->
-    <div class="form-container login-border" *ngIf="loginMode === 'otp'">
+    <div class="form-container login-border" *ngIf="loginMode === 'otp' || loginMode === 'pass_reset_otp'">
       <h2 class="signup-head">OTP Verification</h2>
       <p class="singup-label">Please enter the OTP sent to your email:</p>
       <form [formGroup]="otpForm">
@@ -118,7 +121,46 @@
         </div>
       </form>
       <p class="resend">Didn't receive the code? <a class="resend-btn" (click)="requestOTP()">Resend OTP</a></p>
+      <p class="resend">
+        <a class="resend-btn" (click)="switchToLogin()">Cancel</a>
+      </p>
     </div>
+
+    <!-- forgot password -->
+    <div class="form-container login-border" *ngIf="loginMode === 'pass_reset'">
+      <h2 class="signup-head">Password Reset</h2>
+
+      <form [formGroup]="passResetForm">
+        <label class="singup-label">Email</label>
+
+        <input class="form-group" formControlName="email" (keyup)="spaceValidation($event)">
+        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
+          <ng-container *ngIf="signupForm.get('email')?.hasError('required')">Email is required</ng-container>
+          <ng-container *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email</ng-container>
+        </ng-container>
+
+
+        <label class="singup-label">New Password</label>
+
+        <input class="form-group" formControlName="password" type="password">
+        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
+          <ng-container *ngIf="signupForm.get('password')?.hasError('required')">New Password is required</ng-container>
+          <ng-container *ngIf="signupForm.get('password')?.hasError('minlength')">New Password must be at least 8
+            characters</ng-container>
+          <ng-container *ngIf="signupForm.get('password')?.hasError('maxlength')">New Password must not exceed 20
+            characters</ng-container>
+        </ng-container>
+
+
+        <div class="switch-buttons">
+          <button class="switch-button1" (click)="onClickPassSendOtp()">Send Otp</button>
+        </div>
+      </form>
+      <p class="resend">
+        <a class="resend-btn" (click)="switchToLogin()">Cancel</a>
+      </p>
+    </div>
+
   </div>
 
   <div class="login-right">

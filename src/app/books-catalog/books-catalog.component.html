@@ -2,7 +2,8 @@
   <div class="book-grid" *ngIf="!loadNewBook">
 
     <ng-container *ngFor="let dairy of selfDairies">
-      <div class="book" [ngStyle]="{'background-color':dairy?.bookConfig?.color ? dairy?.bookConfig?.color :'#E0C9A6'}">
+      <div class="book" [ngStyle]="{'background-color':dairy?.bookConfig?.color ? dairy?.bookConfig?.color :'#E0C9A6'}"
+        (click)="openBook(dairy)">
         <div class="book-details">
           <h3 class="book-title-mini" [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive',
             'color':dairy?.titleConfig?.color ? dairy?.titleConfig?.color : '' }">
@@ -14,9 +15,9 @@
             {{dairy?.year}}
           </p>
         </div>
-        <div class="overlay" (click)="openBook(dairy)">
+        <!-- <div class="overlay" (click)="openBook(dairy)">
           <p>Click for more details</p>
-        </div>
+        </div> -->
       </div>
     </ng-container>
 

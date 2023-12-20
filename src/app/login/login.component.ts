@@ -20,6 +20,8 @@ export class LoginComponent {
   loginForm!: FormGroup;
   signupForm!: FormGroup;
   otpForm!: FormGroup;
+  passResetForm!: FormGroup;
+
   emailRegex =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -85,6 +87,18 @@ export class LoginComponent {
       otp4: ['', Validators.required],
     });
 
+    this.passResetForm = this.formbuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(20),
+        ],
+      ],
+    });
+
     document.querySelectorAll('.page').forEach((page) => {
       page.addEventListener('click', () => {
         page.classList.toggle('turn'); // Toggle the class for page flipping
@@ -96,11 +110,20 @@ export class LoginComponent {
   switchToLogin() {
     this.loginMode = 'login';
     this.signupForm.reset();
+    this.passResetForm.reset();
+    this.otpForm.reset();
+    this.userIdToProcess = '';
     this.signupForm.updateValueAndValidity();
   }
 
   switchToSignUp() {
     this.loginMode = 'signup';
+    this.loginForm.reset();
+    this.loginForm.updateValueAndValidity();
+  }
+
+  onClickForgotPass() {
+    this.loginMode = 'pass_reset';
     this.loginForm.reset();
     this.loginForm.updateValueAndValidity();
   }
@@ -223,6 +246,7 @@ export class LoginComponent {
           this.toastr.success(response.message);
           this.loginMode = 'login';
           this.otpForm.reset();
+          this.userIdToProcess = '';
         } else {
           this.toastr.error(response.message);
         }
@@ -265,6 +289,44 @@ export class LoginComponent {
     });
   }
 
+  onClickPassSendOtp() {
+    if (this.passResetForm.valid) {
+      this.requestForgotPass();
+    }
+  }
+
+  requestForgotPass() {
+    if (this.singup_loading) {
+      return;
+    }
+
+    this.singup_loading = true;
+    const chunky = {
+      email: this.passResetForm.value.email,
+      password: this.passResetForm.value.password,
+    };
+
+    this.appService.forgotPassword(chunky).subscribe({
+      next: (response: any) => {
+        console.log('Forgot pass Response', response);
+        this.singup_loading = false;
+
+        if (response?.success) {
+          this.loginMode = 'pass_reset_otp';
+          this.userIdToProcess = response.userId;
+          this.passResetForm.reset();
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      error: (error: any) => {
+        console.log(error);
+        this.singup_loading = false;
+        this.toastr.error('Unable to request password reset.');
+      },
+    });
+  }
+
   // =================  FORM VALIDATIONS  =====================  //
   replaceSpace(event: any) {
     console.log(event.target.value);
@@ -283,7 +345,7 @@ export class LoginComponent {
 
   //  ================  EVENTS  ==================  //
   spaceValidation(event: any) {
-    if(event.target.value.charCodeAt() === 32){
+    if (event.target.value.charCodeAt() === 32) {
       return false;
     }
     return event;

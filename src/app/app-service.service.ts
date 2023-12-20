@@ -62,4 +62,10 @@ export class AppServiceService {
     const url = this.appSettings.APIS.DAIRY_PAGES;
     return this.appSettings.requestServer(body, url);
   }
+
+  // password reset request
+  forgotPassword(body: any) {
+    const url = this.appSettings.APIS.REQUEST_PASS_RESET;
+    return this.appSettings.requestServer(body, url);
+  }
 }
