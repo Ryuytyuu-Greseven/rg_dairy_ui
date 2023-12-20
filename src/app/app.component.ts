@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environement';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'dairy_ui';
+  title = 'diary_ui';
 
   constructor(
     private fb: FormBuilder,

@@ -17,7 +17,7 @@
       <!-- <input type="text" class="book-title" minlength="1" maxlength="25"> -->
     </div>
     <button class="create-dairy close-dairy" (click)="closeDairy()">Close</button>
-    <button class="create-dairy" (click)="createDairy()">Create Dairy</button>
+    <button class="create-dairy" (click)="createDairy()">Create Diary</button>
   </div>
 
 
@@ -87,7 +87,7 @@
       <div id="book-title" class="book-title" [innerHTML]="title"
         [ngStyle]="{'font-family':currentDairyDetails?.titleConfig?.font,'color':bgColorSelecetdTitle}"></div>
     </div>
-    <!-- <button class="create-dairy">Open Dairy</button> -->
+    <!-- <button class="create-dairy">Open Diary</button> -->
   </div>
 
   <!-- Add more pages with the same structure -->

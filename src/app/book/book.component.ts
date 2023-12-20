@@ -195,13 +195,13 @@ export class BookComponent implements OnDestroy, OnInit {
             this.toastr.success(response.message);
             this.incomingBook.emit(true);
           } else {
-            this.toastr.error('Unable to create dairy.');
+            this.toastr.error('Unable to create diary.');
           }
         },
         error: (error: any) => {
           console.log(error);
           this.book_loading = false;
-          this.toastr.error('Unable to create dairy.');
+          this.toastr.error('Unable to create diary.');
         },
       });
     }
