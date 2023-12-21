@@ -1,3 +1,22 @@
+.diary-type {
+  cursor: pointer;
+}
+
+.diary-type-selection {
+  color: silver;
+  padding: 5px 10px;
+  margin-right: 10px;
+  background-color: black;
+  border-radius: 10px;
+  border: solid #5d475e;
+  border: 5px;
+}
+
+.diary-type-highlight {
+  background-color: #333;
+  color: white;
+}
+
 .book-page {
   width: 60%;
   /* Adjust the width of the book page */
@@ -130,6 +149,19 @@
   font-weight: 500;
   font-style: normal;
   text-align: right;
+}
+
+.book-type {
+  margin-top: 2%;
+  text-align: center;
+  font-style: normal;
+  text-align: left;
+
+  display: inline;
+  color: rgb(255, 255, 255);
+  background-color: #333;
+  border-radius: 10px;
+  padding: 2px 4px;
 }
 
 .create-dairy {

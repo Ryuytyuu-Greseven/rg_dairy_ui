@@ -29,7 +29,8 @@ export class BookComponent implements OnDestroy, OnInit {
   isDairyClosed = true;
 
   title = 'Title';
-  year =`${new Date().getFullYear()}`;
+  year = `${new Date().getFullYear()}`;
+  diaryType = 1;
 
   // requests loading
   book_loading = false;
@@ -58,6 +59,8 @@ export class BookComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     console.log('Yeah Book Opened');
+    this.diaryType = 1;
+
     this.urlSubscription = this.activatedRoute.url.subscribe({
       next: (query) => {
         console.log(query);
@@ -169,6 +172,11 @@ export class BookComponent implements OnDestroy, OnInit {
     layer2?.classList.toggle('book-freeze');
   }
 
+  // change diary type
+  changeDiaryType(type: 1 | 2) {
+    this.diaryType = type;
+  }
+
   // create a new dairy
   createDairy() {
     if (this.book_loading) {
@@ -182,6 +190,7 @@ export class BookComponent implements OnDestroy, OnInit {
       font: this.currentFont.font,
       titleColor: this.bgColorSelecetdTitle,
       bookColor: this.bgColorSelected,
+      type: this.diaryType,
     };
 
     console.log(chunky);

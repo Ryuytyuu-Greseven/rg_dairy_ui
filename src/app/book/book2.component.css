@@ -270,7 +270,18 @@
 
 @media screen and (min-width: 400px) and (max-width:768px) {
 
-  /* Basic styles for the book layout */
+  .diary-type-selection {
+    color: silver;
+    padding: 5px 10px;
+    margin-right: 10px;
+    background-color: black;
+    border-radius: 10px;
+    border: solid #5d475e;
+    border: 5px;
+
+    font-size: 10px;
+  }
+
   .book {
     /* width: 60%; */
     height: 75%;
@@ -419,7 +430,18 @@
 
 @media screen and (min-width: 290px) and (max-width:399px) {
 
-  /* Basic styles for the book layout */
+  .diary-type-selection {
+    color: silver;
+    padding: 5px 10px;
+    margin-right: 10px;
+    background-color: black;
+    border-radius: 10px;
+    border: solid #5d475e;
+    border: 5px;
+
+    font-size: 10px;
+  }
+
   .book {
     /* width: 60%; */
     height: 75%;
@@ -459,6 +481,16 @@
     text-align: right;
   }
 
+  .book-type {
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 2%;
+    /* font-style: italic; */
+    color: rgb(255, 255, 255);
+    background-color: #333;
+    border-radius: 10px;
+    padding: 2px 4px;
+  }
 
   .page {
     /* Height of the pages */

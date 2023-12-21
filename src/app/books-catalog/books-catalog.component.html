@@ -5,6 +5,7 @@
       <div class="book" [ngStyle]="{'background-color':dairy?.bookConfig?.color ? dairy?.bookConfig?.color :'#E0C9A6'}"
         (click)="openBook(dairy)">
         <div class="book-details">
+
           <h3 class="book-title-mini" [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive',
             'color':dairy?.titleConfig?.color ? dairy?.titleConfig?.color : '' }">
             {{dairy?.title}}</h3>
@@ -13,6 +14,9 @@
           <p class="book-year-mini" [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive',
             'color':dairy?.titleConfig?.color ? dairy?.titleConfig?.color : ''  }">
             {{dairy?.year}}
+          </p>
+          <p class="book-type-mini">
+            {{dairy?.type === 1 ? 'Personal Diary': 'Story Book'}}
           </p>
         </div>
         <!-- <div class="overlay" (click)="openBook(dairy)">
