@@ -416,3 +416,266 @@
     }
   }
 }
+
+@media screen and (min-width: 290px) and (max-width:399px) {
+
+  /* Basic styles for the book layout */
+  .book {
+    /* width: 60%; */
+    height: 75%;
+    width: 95%;
+    margin: auto;
+    perspective: 1000px;
+    margin-left: 0%;
+    margin-top: 10%;
+    /* Adds depth to the book */
+  }
+
+  .book-freeze {
+    position: relative;
+    z-index: -10;
+  }
+
+  .adjust-book-mobile {
+    margin-left: 4%;
+  }
+
+
+  .book-title {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 4em;
+    font-weight: 500;
+    font-style: italic;
+    text-shadow: #333;
+  }
+
+  .book-year {
+    margin-top: 2%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    text-align: right;
+  }
+
+
+  .page {
+    /* Height of the pages */
+    height: 55%;
+    width: 92%;
+
+    /* coolrs */
+    background-color: #E0C9A6;
+    color: black;
+    font-size: large;
+    line-height: 1.4;
+
+    /* border */
+    border-radius: 25px;
+
+    /* box-shadow: 0 0 20px rgba(180, 178, 178, 0.1); */
+    transform-style: preserve-3d;
+    /* Preserves 3D transformations */
+    transition: transform 1.5s ease-in-out, opacity 3s ease-in-out;
+    /* Smooth transition for page flipping */
+    /* position: relative; */
+    z-index: 1;
+
+    /* stack papers */
+    position: absolute;
+    /* box-shadow: 0 10px 34px white; */
+  }
+
+  .page .content {
+    padding: 10px;
+  }
+
+
+  .edit-page {
+    max-height: 25px;
+    max-width: 25px;
+    padding: 2px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .edit-page i {
+    margin-left: 25%;
+    font-size: 15px;
+    margin-top: 0px;
+  }
+
+  /* COVERPAGE */
+  .coverpage {
+    margin-left: 10px;
+    margin-top: 0%;
+  }
+
+  .page-no {
+    text-align: right;
+    font-size: medium;
+    /* background-color: #d1b386; */
+    padding: 0%;
+    /* flex: auto; */
+    display: inline-block;
+    position: fixed;
+    top: 0px;
+    right: 5%;
+  }
+
+  .content-log {
+    margin-top: 0%;
+    line-height: 0.6;
+    font-style: italic;
+    text-align: justify;
+    font-size: small;
+  }
+
+
+  /* FONTS PREVIEW */
+  .font-list {
+    position: absolute;
+    /* right: 25px; */
+    top: 25%;
+    margin-right: 7%;
+    max-height: 30%;
+    overflow-y: auto;
+
+    background-color: #181818;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .font-list-mobile {
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #181818;
+  }
+
+  .font-list::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none
+      /* Webkit (Chrome, Safari, etc.) */
+  }
+
+  .font-preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    margin-top: 7px;
+  }
+
+  .color-picker {
+    background-color: transparent;
+    right: 25px;
+    display: flex;
+    gap: 40px;
+    top: 15%;
+  }
+
+  .picker-title {
+    right: 9%;
+  }
+
+  .close-old-dairy {
+    position: absolute;
+    top: 11%;
+    right: 1%;
+  }
+
+  .end-title {
+    font-size: 40px;
+    margin-top: 60%;
+    margin-left: 14%;
+  }
+
+  .layers-icon {
+    cursor: pointer;
+    opacity: 1;
+    z-index: 0;
+    color: rgb(0 0 0);
+    right: -20px;
+    top: 100px;
+    font-size: 25px;
+    background-color: wheat;
+    padding: 4px;
+    border-radius: 4px;
+  }
+
+  .custom-layers-toggle {
+    opacity: 0;
+    position: fixed;
+    z-index: -20;
+  }
+
+  .custom-layers-toggle-open {
+    opacity: 1;
+    position: static;
+    z-index: 0;
+  }
+
+  .custom-layers-toggle-open>*:nth-child(n) {
+    animation: layersAnimation 1s ease forwards;
+  }
+
+  .create-dairy {
+    display: block;
+    background-color: black;
+    padding: 6px;
+    border-radius: 20px;
+    position: absolute;
+    right: 6px;
+    bottom: 4px;
+    font-size: 10px;
+    color: #E0C9A6;
+  }
+
+  .create-dairy:hover {
+    background-color: rgb(78, 30, 2);
+    padding: 5px;
+    border-radius: 20px;
+  }
+
+  .close-dairy {
+    position: absolute;
+    right: auto;
+    left: 6px;
+    bottom: 4px;
+  }
+
+  .previous-page {
+    display: block;
+    background-color: black;
+    padding: 6px;
+    border-radius: 20px;
+    position: absolute;
+    left: 6px;
+    bottom: 4px;
+    font-size: 10px;
+    color: #E0C9A6;
+  }
+
+  .close-old-dairy.close-btn {
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #5d475e;
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 10px;
+  }
+
+  @keyframes layersAnimation {
+    0% {
+      right: -25px;
+    }
+
+    100% {
+      right: 25px
+    }
+  }
+}

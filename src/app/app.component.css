@@ -100,32 +100,17 @@ button[type="submit"]:hover {
   color: #ccc;
 }
 
-
-/* switch logins */
-switch-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.switch-button {
-  padding: 10px 20px;
-  margin: 0 10px;
-  background-color: #009688;
-  /* Button color */
-  color: #ffffff;
-  /* Button text color */
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.switch-button:hover {
-  background-color: #00796b;
-  /* Button hover color */
-}
-
-
 .dash-header {
   background-color: black;
+}
+
+
+@media screen and (min-width: 290px) and (max-width:399px) {
+  .nav-links a {
+    color: white;
+    margin-left: 2px;
+    margin-right: 0px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
 }

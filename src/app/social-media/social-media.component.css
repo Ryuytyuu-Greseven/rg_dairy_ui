@@ -6,6 +6,16 @@
   /* Adjust spacing */
 }
 
+@media screen and (min-width: 290px) and (max-width:399px) {
+  .social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+    /* Adjust spacing */
+  }
+}
+
 .social-media a {
   text-decoration: none;
   /* color: #333; */
