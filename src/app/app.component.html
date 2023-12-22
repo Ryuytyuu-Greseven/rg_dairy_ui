@@ -3,6 +3,14 @@
   <div class="spacer"></div>
   <nav *ngIf="isScreenSmall(); else largeScreen" class="nav-links">
     <!-- <a mat-button routerLink="/home">Home</a> -->
+
+    <!-- <button class="menu-toggle" (click)="toggleNav()">&#9776;</button>
+    <ul class="nav-links" [ngClass]="{ 'active': toggleNavBar }">
+      <li> <a routerLink="/books-catalog">Books0</a></li>
+      <li> <a routerLink="/about-us">About</a></li>
+      <li> <a (click)="logoutUser()">Logout</a></li>
+    </ul> -->
+
     <ng-container *ngIf="appService.userLoggedIn">
       <a mat-button routerLink="/books-catalog">Books</a>
       <a mat-button routerLink="/about-us">About</a>

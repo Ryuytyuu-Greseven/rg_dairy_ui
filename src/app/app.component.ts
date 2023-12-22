@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environement';
 })
 export class AppComponent {
   title = 'diary_ui';
+  toggleNavBar = false;
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +31,9 @@ export class AppComponent {
   }
 
   isScreenSmall(): boolean {
+    // const variable = this.breakpointObserver.isMatched(
+    //   '(min-width: 290px) and (max-width: 768px)'
+    // );
     return this.breakpointObserver.isMatched('(max-width: 768px)');
   }
 
@@ -37,5 +41,9 @@ export class AppComponent {
     sessionStorage.clear();
     this.appService.userLoggedIn = false;
     this.router.navigate(['/login']);
+  }
+
+  toggleNav() {
+    this.toggleNavBar = !this.toggleNavBar;
   }
 }
