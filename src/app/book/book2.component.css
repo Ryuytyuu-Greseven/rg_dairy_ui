@@ -276,8 +276,7 @@
     margin-right: 10px;
     background-color: black;
     border-radius: 10px;
-    border: solid #5d475e;
-    border: 5px;
+    border: solid 4px #ffffff;
 
     font-size: 10px;
   }
@@ -328,6 +327,14 @@
     /* box-shadow: 0 10px 34px white; */
   }
 
+  .book-title {
+    margin-top: 5%;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 500;
+    font-style: italic;
+    text-shadow: #333;
+  }
 
   /* FONTS PREVIEW */
   .font-list {
@@ -436,8 +443,7 @@
     margin-right: 10px;
     background-color: black;
     border-radius: 10px;
-    border: solid #5d475e;
-    border: 5px;
+    border: solid 4px #ffffff;
 
     font-size: 10px;
   }
@@ -464,9 +470,9 @@
 
 
   .book-title {
-    margin-top: 10%;
+    margin-top: 5%;
     text-align: center;
-    font-size: 4em;
+    font-size: 2em;
     font-weight: 500;
     font-style: italic;
     text-shadow: #333;

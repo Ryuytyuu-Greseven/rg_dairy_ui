@@ -59,13 +59,15 @@
             {{pageDetails?.pageNo}}</h2>
 
           <!-- <p>Author Name</p> -->
-          <div class="content-log" id="user-text-input" [contentEditable]="isUserWriting" (input)="handleInput($event)"
-            [ngStyle]="{'font-family':currentDairyDetails?.titleConfig?.font}">
+          <div class="content-log" [id]="'user-text-input-' + pageDetails?.pageNo" [contentEditable]="isUserWriting"
+            (input)="handleInput($event)" [ngStyle]="{'font-family':currentDairyDetails?.titleConfig?.font}">
             <p [innerHTML]="pageDetails?.text"></p>
           </div>
 
           <button class="previous-page" *ngIf="!isUserWriting && pageDetails?.pageNo !== 1"
             (click)="onTurnPreviousPage(pageDetails,ind)">Previous Page</button>
+          <button class="previous-page" *ngIf="!isUserWriting && pageDetails?.pageNo === 1" (click)="openDairy()">Cover
+            Page</button>
           <button class="create-dairy" *ngIf="!isUserWriting" (click)="onTurnPage(pageDetails,ind)">Turn Page</button>
           <button class="create-dairy" *ngIf="isUserWriting" (click)="savePage(pageDetails)">Save Page</button>
 
@@ -91,7 +93,7 @@
     [ngStyle]="{'background-color':currentDairyDetails?.bookConfig?.color ? currentDairyDetails?.bookConfig?.color :'#E0C9A6','color':currentDairyDetails?.titleConfig?.color ? currentDairyDetails?.titleConfig?.color : ''}"
     *ngIf="bookType === 'old'">
     <div class="content">
-      <p class="book-type  diary-type-selection">
+      <p class="book-type diary-type-selection">
         <i class="far fa-check-circle" *ngIf="diaryType !== 2 ? true : false"></i>
         {{currentDairyDetails?.type === 1 ?
         'Personal Diary': 'Story Book'}}
@@ -126,8 +128,8 @@
     </div>
 
     <div class="font-list color-picker">
-      <input type="color" id="colorPicker" (input)="onColorPickedBook($event)">
-      <input type="color" id="colorPicker" (input)="onColorPickedTitle($event)">
+      <input type="color" id="colorPicker" value="#6fe458" (input)="onColorPickedBook($event)">
+      <input type="color" id="colorPicker" value="#1919df" (input)="onColorPickedTitle($event)">
     </div>
     <!-- <div class="font-list color-picker picker-title">
       <input type="color" id="colorPicker" (input)="onColorPickedTitle($event)">

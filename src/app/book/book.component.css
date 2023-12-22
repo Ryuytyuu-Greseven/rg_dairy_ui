@@ -8,8 +8,8 @@
   margin-right: 10px;
   background-color: black;
   border-radius: 10px;
-  border: solid #5d475e;
-  border: 5px;
+  border: solid 4px #ffffff;
+  margin-right: 5px;
 }
 
 .diary-type-highlight {
@@ -134,7 +134,7 @@
 }
 
 .book-title {
-  margin-top: 40%;
+  margin-top: 5%;
   text-align: center;
   font-size: 5em;
   font-weight: 500;

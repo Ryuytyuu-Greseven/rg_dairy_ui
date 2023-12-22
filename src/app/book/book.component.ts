@@ -110,9 +110,11 @@ export class BookComponent implements OnDestroy, OnInit {
 
   // turn to next page
   openDairy() {
-    const page = document.getElementById('book-open-card');
-    page?.classList.toggle('turn'); // Toggle the class for page flipping
-    this.isDairyClosed = !this.isDairyClosed;
+    if (this.previousTurnedPage === 0) {
+      const page = document.getElementById('book-open-card');
+      page?.classList.toggle('turn'); // Toggle the class for page flipping
+      this.isDairyClosed = !this.isDairyClosed;
+    }
   }
   // turn to next page
   onTurnPage(pageDetails: any, ind: number) {
@@ -245,6 +247,7 @@ export class BookComponent implements OnDestroy, OnInit {
         console.log('Login Response', response);
 
         if (response?.success) {
+          this.previousTurnedPage = 0;
           this.currentDairyDetails = response.data;
           this.title = this.currentDairyDetails.title;
           this.year = this.currentDairyDetails.year;
@@ -297,12 +300,20 @@ export class BookComponent implements OnDestroy, OnInit {
     }
 
     this.book_loading = true;
-    const text = document.getElementById('user-text-input')?.innerHTML;
+    let text = document.getElementById(
+      'user-text-input-' + pageDetails.pageNo
+    )?.innerHTML;
+
+    text = text?.replaceAll('<p></p>', '');
+
     const chunky = {
       text,
       pageNo: pageDetails.pageNo,
       bookId: this.currentDairyId,
+      pageId: pageDetails._id,
     };
+
+    console.log(pageDetails, chunky);
 
     this.appService.savePage(chunky).subscribe({
       next: (response: any) => {
@@ -311,6 +322,7 @@ export class BookComponent implements OnDestroy, OnInit {
 
         if (response?.success) {
           pageDetails = response.data;
+          this.isUserWriting = false;
         } else {
           this.toastr.error(response.message);
         }
