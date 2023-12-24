@@ -17,6 +17,9 @@ export class LoginComponent {
   activePage = 1;
   loginMode = 'login';
 
+  // password
+  isPassVisivble = false;
+
   loginForm!: FormGroup;
   signupForm!: FormGroup;
   otpForm!: FormGroup;
@@ -48,7 +51,14 @@ export class LoginComponent {
     }, 4000);
 
     this.loginForm = this.formbuilder.group({
-      username: ['', Validators.required],
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(20),
+        ],
+      ],
       password: [
         '',
         [
@@ -68,7 +78,14 @@ export class LoginComponent {
           Validators.maxLength(20),
         ],
       ],
-      username: ['', Validators.required],
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(20),
+        ],
+      ],
       email: ['', [Validators.required, Validators.email]],
       password: [
         '',
@@ -106,6 +123,12 @@ export class LoginComponent {
     });
   }
 
+  // =====================  password & it's masking  =====================  //
+  // password view
+  openPass() {
+    this.isPassVisivble = !this.isPassVisivble;
+  }
+
   // login type switch
   switchToLogin() {
     this.loginMode = 'login';
@@ -130,6 +153,9 @@ export class LoginComponent {
 
   // login process
   onClickLogin() {
+    this.loginForm.markAllAsTouched();
+    this.loginForm.markAsDirty();
+    this.loginForm.updateValueAndValidity();
     console.log(this.loginForm);
 
     if (this.loginForm.valid) {
@@ -176,6 +202,9 @@ export class LoginComponent {
   // signup process
   onClickSignup() {
     console.log(this.signupForm);
+    this.signupForm.markAllAsTouched();
+    this.signupForm.markAsDirty();
+    this.signupForm.updateValueAndValidity();
 
     if (this.signupForm.valid) {
       this.singupUser();
@@ -290,6 +319,10 @@ export class LoginComponent {
   }
 
   onClickPassSendOtp() {
+    this.passResetForm.markAllAsTouched();
+    this.passResetForm.markAsDirty();
+    this.passResetForm.updateValueAndValidity();
+
     if (this.passResetForm.valid) {
       this.requestForgotPass();
     }

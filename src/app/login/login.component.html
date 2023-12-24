@@ -10,14 +10,24 @@
 
         <input class="form-group" formControlName="username" #username1 [value]="username1.value| lowercase"
           (keyup)="replaceSpace($event)">
-        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
+        <div class="form-error" *ngIf="loginForm.get('username')?.errors && loginForm.get('username')?.dirty">
           <ng-container *ngIf="loginForm.get('username')?.hasError('required')">Username is required
           </ng-container>
-        </ng-container>
+          <ng-container *ngIf="loginForm.get('username')?.hasError('minlength')">Username must be at least 4
+            characters
+          </ng-container>
+          <ng-container *ngIf="loginForm.get('username')?.hasError('maxlength')">Username must not exceed 20
+            characters
+          </ng-container>
+        </div>
 
         <label class="singup-label">Password</label>
-        <input class="form-group" formControlName="password" type="password">
-        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
+        <div class="form-pass">
+          <input class="form-group" formControlName="password" [type]="isPassVisivble ? 'text' : 'password'">
+          <span class="pass-eye" (click)="openPass()"><i class="fas "
+              [ngClass]="{'fa-eye-slash':!isPassVisivble,'fa-eye':isPassVisivble}"></i></span>
+        </div>
+        <div class="form-error" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.dirty">
           <ng-container *ngIf="loginForm.get('password')?.hasError('required')">
             Password is required
           </ng-container>
@@ -27,7 +37,7 @@
           <ng-container *ngIf="loginForm.get('password')?.hasError('maxlength')">Password must not exceed 20
             characters
           </ng-container>
-        </ng-container>
+        </div>
 
         <div class="switch-buttons">
           <button class="switch-button1" (click)="onClickLogin()">Login</button>
@@ -49,47 +59,57 @@
         <label class="singup-label">Profile Name</label>
 
         <input class="form-group" formControlName="profilename">
-        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
+        <div class="form-error" *ngIf="signupForm.get('profilename')?.errors && signupForm.get('profilename')?.dirty">
           <ng-container *ngIf="signupForm.get('profilename')?.hasError('required')">Profile name is
             required</ng-container>
           <ng-container *ngIf="signupForm.get('profilename')?.hasError('minlength')">Profile name must be at least 8
             characters</ng-container>
           <ng-container *ngIf="signupForm.get('profilename')?.hasError('maxlength')">Profile name must not exceed 20
             characters</ng-container>
-        </ng-container>
+        </div>
 
 
 
         <label class="singup-label">User Name</label>
         <input class="form-group" formControlName="username" #username2 [value]="username2.value| lowercase"
           (keyup)="replaceSpace($event)">
-        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
+        <div class="form-error" *ngIf="signupForm.get('username')?.errors && signupForm.get('username')?.dirty">
           <ng-container *ngIf="signupForm.get('username')?.hasError('required')">User name is required</ng-container>
           <ng-container *ngIf="signupForm.get('username')?.hasError('exists')">User name already exists!</ng-container>
-        </ng-container>
+          <ng-container *ngIf="signupForm.get('username')?.hasError('minlength')">Username must be at least 4
+            characters
+          </ng-container>
+          <ng-container *ngIf="signupForm.get('username')?.hasError('maxlength')">Username must not exceed 20
+            characters
+          </ng-container>
+        </div>
 
 
 
         <label class="singup-label">Email</label>
 
         <input class="form-group" formControlName="email" (keyup)="spaceValidation($event)">
-        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
+        <div class="form-error" *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.dirty">
           <ng-container *ngIf="signupForm.get('email')?.hasError('required')">Email is required</ng-container>
           <ng-container *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email</ng-container>
-        </ng-container>
+        </div>
 
 
 
         <label class="singup-label">Password</label>
+        <div class="form-pass">
+          <input class="form-group" formControlName="password" [type]="isPassVisivble ? 'text' : 'password'">
+          <span class="pass-eye" (click)="openPass()"><i class="fas "
+              [ngClass]="{'fa-eye-slash':!isPassVisivble,'fa-eye':isPassVisivble}"></i></span>
+        </div>
 
-        <input class="form-group" formControlName="password" type="password">
-        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
+        <div class="form-error" *ngIf="signupForm.get('password')?.errors && signupForm.get('password')?.dirty">
           <ng-container *ngIf="signupForm.get('password')?.hasError('required')">Password is required</ng-container>
           <ng-container *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be at least 8
             characters</ng-container>
           <ng-container *ngIf="signupForm.get('password')?.hasError('maxlength')">Password must not exceed 20
             characters</ng-container>
-        </ng-container>
+        </div>
 
 
 
@@ -134,22 +154,27 @@
         <label class="singup-label">Email</label>
 
         <input class="form-group" formControlName="email" (keyup)="spaceValidation($event)">
-        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
-          <ng-container *ngIf="signupForm.get('email')?.hasError('required')">Email is required</ng-container>
-          <ng-container *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email</ng-container>
-        </ng-container>
+        <div class="form-error" *ngIf="passResetForm.get('email')?.errors && passResetForm.get('email')?.dirty">
+          <ng-container *ngIf="passResetForm.get('email')?.hasError('required')">Email is required</ng-container>
+          <ng-container *ngIf="passResetForm.get('email')?.hasError('email')">Please enter a valid email</ng-container>
+        </div>
 
 
         <label class="singup-label">New Password</label>
+        <div class="form-pass">
+          <input class="form-group" formControlName="password" [type]="isPassVisivble ? 'text' : 'password'">
+          <span class="pass-eye" (click)="openPass()"><i class="fas "
+              [ngClass]="{'fa-eye-slash':!isPassVisivble,'fa-eye':isPassVisivble}"></i></span>
+        </div>
 
-        <input class="form-group" formControlName="password" type="password">
-        <ng-container *ngIf="loginForm.get('password')?.pristine && loginForm.get('password')?.dirty">
-          <ng-container *ngIf="signupForm.get('password')?.hasError('required')">New Password is required</ng-container>
-          <ng-container *ngIf="signupForm.get('password')?.hasError('minlength')">New Password must be at least 8
+        <div class="form-error" *ngIf="passResetForm.get('password')?.errors && passResetForm.get('password')?.dirty">
+          <ng-container *ngIf="passResetForm.get('password')?.hasError('required')">New Password is
+            required</ng-container>
+          <ng-container *ngIf="passResetForm.get('password')?.hasError('minlength')">New Password must be at least 8
             characters</ng-container>
-          <ng-container *ngIf="signupForm.get('password')?.hasError('maxlength')">New Password must not exceed 20
+          <ng-container *ngIf="passResetForm.get('password')?.hasError('maxlength')">New Password must not exceed 20
             characters</ng-container>
-        </ng-container>
+        </div>
 
 
         <div class="switch-buttons">

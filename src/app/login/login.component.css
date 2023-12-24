@@ -19,6 +19,26 @@
   margin-bottom: 10px;
 }
 
+.form-error {
+  color: #f67474;
+  text-align: left;
+  font-size: 15px;
+  margin-left: 12%;
+  margin-top: -10px;
+}
+
+.form-pass {
+  position: relative;
+}
+
+.pass-eye {
+  position: absolute;
+  right: 15%;
+  top: 15%;
+  cursor: pointer;
+  color: wheat;
+}
+
 .login-border {
   margin-top: 100px;
   margin-bottom: 10px;
