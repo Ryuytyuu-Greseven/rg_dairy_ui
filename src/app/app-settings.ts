@@ -18,7 +18,7 @@ export class AppSettings {
     VERIFY_USER: this.globalUrl + '/users/verify',
     RESEND_OTP: this.globalUrl + '/users/resend_otp',
 
-    FETCH_USER_DETAILS: this.globalUrl + '/user/details',
+    FETCH_USER_DETAILS: this.globalUrl + '/users/details',
     CREATE_DAIRY: this.globalUrl + '/users/create',
     FETCH_SELF_DAIRIES: this.globalUrl + '/users/self-dairies',
     FETCH_DAIRY_DETAILS: this.globalUrl + '/users/dairy-details',

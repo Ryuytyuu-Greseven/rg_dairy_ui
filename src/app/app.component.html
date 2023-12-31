@@ -1,54 +1,74 @@
-<mat-toolbar class="dash-header" *ngIf="appService.userLoggedIn">
-  <span class="logo">Diary</span>
-  <div class="spacer"></div>
+<div class="dash-header" *ngIf="profileDetails?.profilename">
   <nav *ngIf="isScreenSmall(); else largeScreen" class="nav-links">
-    <!-- <a mat-button routerLink="/home">Home</a> -->
+    <button class="menu-toggle" (click)="toggleNav()">&#9776;</button>
 
+    <span class="logo">Diary1</span>
+
+    <!-- <a mat-button routerLink="/home">Home</a> -->
     <!-- <button class="menu-toggle" (click)="toggleNav()">&#9776;</button>
     <ul class="nav-links" [ngClass]="{ 'active': toggleNavBar }">
       <li> <a routerLink="/books-catalog">Books0</a></li>
       <li> <a routerLink="/about-us">About</a></li>
       <li> <a (click)="logoutUser()">Logout</a></li>
     </ul> -->
-
+    <!--
     <ng-container *ngIf="appService.userLoggedIn">
       <a mat-button routerLink="/books-catalog">Books</a>
       <a mat-button routerLink="/about-us">About</a>
-      <a (click)="logoutUser()">Logout</a>
-    </ng-container>
-    <!-- <a mat-button routerLink="/services">Services</a>
-    <a mat-button routerLink="/contact">Contact</a> -->
+      <a mat-button (click)="logoutUser()">Logout</a>
+    </ng-container> -->
+
+    <span *ngIf="profileDetails?.profilename" class="logo profile-name"
+      (click)="openProfileDetails()">{{profileDetails?.profilename | titlecase}}</span>
   </nav>
+
   <ng-template #largeScreen>
     <nav class="nav-links">
-      <!-- <a mat-button routerLink="/home">Home</a> -->
-      <ng-container *ngIf="appService.userLoggedIn">
+      <span class="logo">Diary2</span>
+
+      <ng-container *ngIf="profileDetails?.profilename">
         <a mat-button routerLink="/books-catalog">Books</a>
         <a mat-button routerLink="/about-us">About</a>
-        <a (click)="logoutUser()">Logout</a>
+        <a mat-button (click)="logoutUser()">Logout</a>
       </ng-container>
-      <!-- <a mat-button routerLink="/services">Services</a>
-      <a mat-button routerLink="/contact">Contact</a> -->
+
+      <span *ngIf="profileDetails?.profilename" class="logo profile-name"
+        (click)="openProfileDetails()">{{profileDetails?.profilename | titlecase}}</span>
     </nav>
   </ng-template>
-</mat-toolbar>
+</div>
 
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" [opened]="isScreenSmall()">
-    <nav class="nav-links">
-      <!-- <a mat-button routerLink="/home">Home</a> -->
-      <ng-container *ngIf="appService.userLoggedIn">
-        <a mat-button routerLink="/books-catalog">Books</a>
-        <a mat-button routerLink="/about-us">About</a>
-        <a (click)="logoutUser()">Logout</a>
-      </ng-container>
-      <!-- <a mat-button routerLink="/services">Services</a>
-      <a mat-button routerLink="/contact">Contact</a> -->
-    </nav>
-  </mat-sidenav>
-  <mat-sidenav-content>
 
-  </mat-sidenav-content>
-</mat-sidenav-container>
 
 <router-outlet></router-outlet>
+
+<div id="mobile-nav-ind" class="mobile-nav">
+  <span class="close" (click)="toggleNav()">Close</span>
+  <div class="nav-links-mob" (click)="toggleNav()">
+    <a routerLink="/books-catalog">Books</a>
+    <a routerLink="/about-us">About</a>
+    <a (click)="logoutUser()">Logout</a>
+  </div>
+
+  <!-- <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side">
+      <nav class="nav-links">
+        <span class="logo">Diary3</span>
+
+        <ng-container *ngIf="appService.userLoggedIn">
+          <a mat-button routerLink="/books-catalog">Books</a>
+          <a mat-button routerLink="/about-us">About</a>
+          <a mat-button (click)="logoutUser()">Logout</a>
+        </ng-container>
+
+        <span *ngIf="appService.userLoggedIn" class="logo profile-name"
+          (click)="openProfileDetails()">{{appService.profileDetails?.profilename | titlecase}}</span>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container> -->
+</div>
+
+<app-profile-details></app-profile-details>

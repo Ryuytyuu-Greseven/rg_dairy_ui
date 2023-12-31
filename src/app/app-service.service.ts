@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppSettings } from './app-settings';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +12,28 @@ export class AppServiceService {
   // books
   oldDairySubject = new Subject();
 
+  // user details
+  profileDetailsSubject = new BehaviorSubject({});
+  profileDetails: any = {};
+
   constructor(
     private httpClient: HttpClient,
     private appSettings: AppSettings
   ) {
     if (sessionStorage.getItem('locator')?.length) {
+      this.userDetails({}).subscribe({
+        next: (response: any) => {
+          console.log('User Details', response);
+          if (response?.success) {
+            this.profileDetails = response.data;
+            this.profileDetailsSubject.next(this.profileDetails);
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
+          // this.toastr.error('Unable to create an account.');
+        },
+      });
       this.userLoggedIn = true;
     }
   }

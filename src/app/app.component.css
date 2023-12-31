@@ -7,6 +7,10 @@ body {
   height: auto;
 }
 
+.menu-toggle {
+  cursor: pointer;
+  border-radius: 4px;
+}
 
 .form-container {
   max-width: 400px;
@@ -78,10 +82,19 @@ button[type="submit"]:hover {
 }
 
 .logo {
+  margin-left: 10px;
   font-size: 1.8rem;
   color: white;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.profile-name {
+  position: absolute;
+  margin-right: 10px;
+  text-transform: none;
+  cursor: pointer;
+  right: 0;
 }
 
 .nav-links {
@@ -101,9 +114,64 @@ button[type="submit"]:hover {
 }
 
 .dash-header {
+  padding: 5px;
   background-color: black;
+  border: 2px solid;
+  border-radius: 10px;
 }
 
+.mobile-nav {
+  position: fixed;
+  top: 0px;
+  left: -350px;
+
+  height: 100%;
+  width: 150px;
+
+  background-color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-right: 5px solid #cac6c6;
+  border-radius: 0px 25px 25px 0px;
+
+  overflow-x: hidden;
+  transition: left 0.5s ease-out;
+}
+
+.mobile-nav .close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.mobile-nav.open {
+  z-index: 25;
+  left: 0px;
+}
+
+.nav-links-mob {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  font-family: fantasy;
+  margin: 25px;
+}
+
+.nav-links-mob a {
+  color: rgb(255, 255, 255);
+  padding: 5px 20px 5px 20px;
+  margin-top: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  background-color: black;
+
+  border: 2px solid #cac6c6;
+  border-radius: 15px;
+}
 
 @media screen and (min-width: 290px) and (max-width:399px) {
   .nav-links a {
@@ -112,5 +180,34 @@ button[type="submit"]:hover {
     margin-right: 0px;
     text-decoration: none;
     transition: color 0.3s ease;
+  }
+
+  .profile-name {
+    position: absolute;
+    margin-right: 10px;
+    text-transform: none;
+    cursor: pointer;
+    /* top: 40px; */
+    right: 0;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width:768px) {
+  .nav-links a {
+    color: white;
+    margin-left: 2px;
+    margin-right: 0px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .profile-name {
+    position: absolute;
+    margin-right: 10px;
+    text-transform: none;
+    cursor: pointer;
+    right: 0;
+    font-size: 20px;
   }
 }

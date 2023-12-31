@@ -180,6 +180,15 @@ export class LoginComponent {
         console.log('Login Response', response);
         this.singup_loading = false;
         if (response?.success) {
+          this.appService.profileDetails = {
+            profilename: response.data.profilename,
+            email: response.data.email,
+            username: response.data.username,
+          };
+          this.appService.profileDetailsSubject.next(
+            this.appService.profileDetails
+          );
+
           sessionStorage.setItem('locator', response.data.access_token);
           sessionStorage.setItem('name', response.data.profilename);
           sessionStorage.setItem('email', response.data.email);

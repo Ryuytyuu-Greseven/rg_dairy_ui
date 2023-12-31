@@ -23,6 +23,7 @@ import { BooksCatalogComponent } from './books-catalog/books-catalog.component';
 import { AboutComponent } from './about/about.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { SocialMediaComponent } from './social-media/social-media.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     BooksCatalogComponent,
     AboutComponent,
     SocialMediaComponent,
+    ProfileDetailsComponent,
   ],
   imports: [
     BrowserModule,

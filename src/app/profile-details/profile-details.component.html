@@ -1,0 +1,27 @@
+<div class="user-profile">
+  <div id="user-profile-content" class="overlay">
+    <div class="overlay-content">
+
+      <h2>Profile Details</h2>
+      <span class="close" (click)="closeProfileDetails()">Close</span>
+      <div class="user-details">
+        <!-- <div class="user-avatar">
+          <img src="user-avatar.jpg" alt="User Avatar">
+        </div> -->
+
+        <div class="user-info">
+          <ng-container *ngFor="let record of profileDetails">
+            <div class="details-capsule">
+              <div class="capsules">
+                <p class="head"> {{record?.nameTag}} </p>
+                <p class="tail">{{record?.key}}</p>
+              </div>
+            </div>
+          </ng-container>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
