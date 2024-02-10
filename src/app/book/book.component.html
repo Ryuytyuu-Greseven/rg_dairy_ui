@@ -67,7 +67,7 @@
             {{pageDetails?.pageNo}}</h2>
 
           <!-- <p>Author Name</p> -->
-          <div class="content-log" [id]="'user-text-input-' + pageDetails?.pageNo" [contentEditable]="isUserWriting"
+          <div class="content-log" [ngClass]="{'edit-log': isUserWriting }" [id]="'user-text-input-' + pageDetails?.pageNo" [contentEditable]="isUserWriting"
             (input)="handleInput($event)" [ngStyle]="{'font-family':currentDairyDetails?.titleConfig?.font}">
             <p [innerHTML]="pageDetails?.text"></p>
           </div>

@@ -291,7 +291,7 @@
     font-style: italic;
     text-align: justify;
     max-height: 600px;
-    min-height: 450px;
+    min-height: 600px;
     overflow-y: auto;
   }
 }
@@ -774,4 +774,9 @@
       right: 25px
     }
   }
+}
+
+
+.edit-log {
+  cursor: text;
 }
