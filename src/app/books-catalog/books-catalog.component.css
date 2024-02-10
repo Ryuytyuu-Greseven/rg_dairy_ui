@@ -57,6 +57,10 @@
   border: solid 2px white;
 }
 
+.book-lock-mini {
+  left: 45px;
+}
+
 .overlay {
   position: absolute;
   top: 0;

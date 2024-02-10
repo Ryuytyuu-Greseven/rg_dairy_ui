@@ -1,19 +1,21 @@
 .diary-type {
   cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .diary-type-selection {
   color: silver;
   padding: 5px 10px;
   margin-right: 10px;
-  background-color: black;
+  background-color: rgb(56, 44, 44);
   border-radius: 10px;
-  border: solid 4px #ffffff;
+  border: solid 2px #ffffff;
   margin-right: 5px;
 }
 
 .diary-type-highlight {
-  background-color: #333;
+  background-color: black;
   color: white;
 }
 

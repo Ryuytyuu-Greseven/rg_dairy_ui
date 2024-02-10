@@ -16,6 +16,10 @@
             {{dairy?.year}}
           </p>
           <p class="book-type-mini">
+            <i *ngIf="dairy?.accessLevel === 2" class="fas fa-lock"></i>
+            <i *ngIf="dairy?.accessLevel === 1" class="fas fa-unlock"></i>
+          </p>
+          <p class="book-type-mini book-lock-mini">
             {{dairy?.type === 1 ? 'Personal Diary': 'Story Book'}}
           </p>
         </div>

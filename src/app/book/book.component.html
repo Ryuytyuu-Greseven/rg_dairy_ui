@@ -17,6 +17,14 @@
         <a class="diary-type-selection" (click)="changeDiaryType(2)"
           [ngClass]="{'diary-type-highlight': diaryType === 2 ? true : false }">
           <i class="far fa-check-circle" *ngIf="diaryType === 2 ? true : false"></i> Story Book</a>
+
+        <!-- resource status -->
+        <a class="diary-type-selection" (click)="changeDiaryLevel(1)"
+          [ngClass]="{'diary-type-highlight': diaryLevel !== 2 ? true : false }">
+          <i class="far fa-check-circle" *ngIf="diaryLevel !== 2 ? true : false"></i> Public </a>
+        <a class="diary-type-selection" (click)="changeDiaryLevel(2)"
+          [ngClass]="{'diary-type-highlight': diaryLevel === 2 ? true : false }">
+          <i class="far fa-check-circle" *ngIf="diaryLevel === 2 ? true : false"></i> Private </a>
       </div>
 
       <div contenteditable="true" id="book-year" class="book-year" [innerHTML]="year"
@@ -97,6 +105,10 @@
         <i class="far fa-check-circle" *ngIf="diaryType !== 2 ? true : false"></i>
         {{currentDairyDetails?.type === 1 ?
         'Personal Diary': 'Story Book'}}
+      </p>
+      <p class="book-type diary-type-selection">
+        <i *ngIf="currentDairyDetails?.accessLevel === 2" class="fas fa-lock"></i>
+        <i *ngIf="currentDairyDetails?.accessLevel === 1" class="fas fa-unlock"></i>
       </p>
       <div id="book-year" class="book-year" [innerHTML]="year"
         [ngStyle]="{'font-family':currentDairyDetails?.titleConfig?.font,'color':bgColorSelecetdTitle}"></div>

@@ -31,6 +31,7 @@ export class BookComponent implements OnDestroy, OnInit {
   title = 'Title';
   year = `${new Date().getFullYear()}`;
   diaryType = 1;
+  diaryLevel = 2;
 
   // requests loading
   book_loading = false;
@@ -60,6 +61,7 @@ export class BookComponent implements OnDestroy, OnInit {
   ngOnInit() {
     console.log('Yeah Book Opened');
     this.diaryType = 1;
+    this.diaryLevel = 2;
 
     this.urlSubscription = this.activatedRoute.url.subscribe({
       next: (query) => {
@@ -179,6 +181,11 @@ export class BookComponent implements OnDestroy, OnInit {
     this.diaryType = type;
   }
 
+  // change diary level
+  changeDiaryLevel(type: 1 | 2) {
+    this.diaryLevel = type;
+  }
+
   // create a new dairy
   createDairy() {
     if (this.book_loading) {
@@ -193,6 +200,7 @@ export class BookComponent implements OnDestroy, OnInit {
       titleColor: this.bgColorSelecetdTitle,
       bookColor: this.bgColorSelected,
       type: this.diaryType,
+      accessLevel: this.diaryLevel,
     };
 
     console.log(chunky);

@@ -304,11 +304,15 @@
     color: silver;
     padding: 5px 10px;
     margin-right: 10px;
-    background-color: black;
+    background-color: rgb(56, 44, 44);
     border-radius: 10px;
-    border: solid 4px #ffffff;
-
+    border: solid 2px #ffffff;
     font-size: 10px;
+  }
+
+  .diary-type-highlight {
+    background-color: black;
+    color: white;
   }
 
   .book {
@@ -478,12 +482,16 @@
   .diary-type-selection {
     color: silver;
     padding: 5px 10px;
-    margin-right: 10px;
-    background-color: black;
+    margin-right: 2px;
+    background-color: rgb(56, 44, 44);
     border-radius: 10px;
-    border: solid 4px #ffffff;
-
+    border: solid 2px #ffffff;
     font-size: 10px;
+  }
+
+  .diary-type-highlight {
+    background-color: black;
+    color: white;
   }
 
   .book {
