@@ -25,6 +25,11 @@ export class AppSettings {
     SAVE_PAGE: this.globalUrl + '/users/save-page',
     DAIRY_PAGES: this.globalUrl + '/users/pages',
 
+    // specific
+    FETCH_OPEN_DIARIES: this.globalUrl + '/users/public-dairies',
+    FETCH_OPEN_DIARY_DETAILS: this.globalUrl + '/users/public-dairy-details',
+    FETCH_OPEN_DIARY_PAGES: this.globalUrl + '/users/public-pages',
+
     // password reset
     REQUEST_PASS_RESET: this.globalUrl + '/users/pass_reset',
   };

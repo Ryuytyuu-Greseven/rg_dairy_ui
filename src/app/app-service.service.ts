@@ -67,8 +67,16 @@ export class AppServiceService {
     const url = this.appSettings.APIS.FETCH_SELF_DAIRIES;
     return this.appSettings.requestServer(body, url);
   }
+  publicDiaries(body: any) {
+    const url = this.appSettings.APIS.FETCH_OPEN_DIARIES;
+    return this.appSettings.requestServer(body, url);
+  }
   dairyDetails(body: any) {
     const url = this.appSettings.APIS.FETCH_DAIRY_DETAILS;
+    return this.appSettings.requestServer(body, url);
+  }
+  publicDiaryDetails(body: any) {
+    const url = this.appSettings.APIS.FETCH_OPEN_DIARY_DETAILS;
     return this.appSettings.requestServer(body, url);
   }
   savePage(body: any) {
@@ -77,6 +85,10 @@ export class AppServiceService {
   }
   pagesFromDairy(body: any) {
     const url = this.appSettings.APIS.DAIRY_PAGES;
+    return this.appSettings.requestServer(body, url);
+  }
+  pagesFromPublicDiary(body: any) {
+    const url = this.appSettings.APIS.FETCH_OPEN_DIARY_PAGES;
     return this.appSettings.requestServer(body, url);
   }
 

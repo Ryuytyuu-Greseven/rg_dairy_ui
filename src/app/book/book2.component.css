@@ -780,3 +780,12 @@
 .edit-log {
   cursor: text;
 }
+
+
+.private {
+  background-color: #670101;
+}
+
+.public {
+  background-color: #01670a;
+}

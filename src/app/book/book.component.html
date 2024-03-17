@@ -46,7 +46,8 @@
       </h1>
     </div>
     <button class="previous-page" (click)="onTurnPreviousPage({},0)">Previous Page</button>
-    <button class="create-dairy" (click)="addNewPage()">New Page</button>
+    <button class="create-dairy" *ngIf="userDetails?.username && currentDairyDetails?.author === userDetails.username"
+      (click)="addNewPage()">New Page</button>
   </div>
 
   <!-- STATIC PAGES -->
@@ -58,7 +59,7 @@
         id="page-{{pageDetails.pageNo}}">
         <div class="content">
           <!-- Content for the first page -->
-          <p class="edit-page" (click)="editPage()">
+          <p class="edit-page" *ngIf="userDetails?.username && currentDairyDetails?.author === userDetails.username" (click)="editPage()">
             <!-- Example using Font Awesome edit icon -->
             <i class="fas fa-pencil-alt"></i>
           </p>
@@ -67,7 +68,8 @@
             {{pageDetails?.pageNo}}</h2>
 
           <!-- <p>Author Name</p> -->
-          <div class="content-log" [ngClass]="{'edit-log': isUserWriting }" [id]="'user-text-input-' + pageDetails?.pageNo" [contentEditable]="isUserWriting"
+          <div class="content-log" [ngClass]="{'edit-log': isUserWriting }"
+            [id]="'user-text-input-' + pageDetails?.pageNo" [contentEditable]="isUserWriting"
             (input)="handleInput($event)" [ngStyle]="{'font-family':currentDairyDetails?.titleConfig?.font}">
             <p [innerHTML]="pageDetails?.text"></p>
           </div>
@@ -106,7 +108,7 @@
         {{currentDairyDetails?.type === 1 ?
         'Personal Diary': 'Story Book'}}
       </p>
-      <p class="book-type diary-type-selection">
+      <p class="book-type diary-type-selection private" [ngClass]="{'public': currentDairyDetails?.accessLevel === 1}">
         <i *ngIf="currentDairyDetails?.accessLevel === 2" class="fas fa-lock"></i>
         <i *ngIf="currentDairyDetails?.accessLevel === 1" class="fas fa-unlock"></i>
       </p>

@@ -373,6 +373,10 @@ export class LoginComponent {
   replaceSpace(event: any) {
     console.log(event.target.value);
     event.target.value = event.target.value.replace(/ /g, '_').trim();
+
+    // to take only alpha numeric _
+    const regex = /[^a-zA-Z0-9_]/g;
+    event.target.value = event.target.value.replace(regex, '');
     return event;
     // this.signupForm.patchValue({
     //   username: newValue,

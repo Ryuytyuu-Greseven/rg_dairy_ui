@@ -1,31 +1,47 @@
 <ng-container *ngIf="!isBookOpened">
+  <div class="books-types">
+    <div class="types" [ngClass]="{'active-type': userView === 'own'}" *ngIf="userLoggedIn"
+      (click)="loadPersonalData('per(*@dety')">
+      Own Books
+    </div>
+    <div class="types" [ngClass]="{'active-type': userView === 'public'}" (click)="loadPersonalData('loca$%pudfic')">
+      Public Books
+    </div>
+  </div>
+
   <div class="book-grid" *ngIf="!loadNewBook">
 
     <ng-container *ngFor="let dairy of selfDairies">
-      <div class="book" [ngStyle]="{'background-color':dairy?.bookConfig?.color ? dairy?.bookConfig?.color :'#E0C9A6'}"
-        (click)="openBook(dairy)">
-        <div class="book-details">
+      <div>
+        <div class="book"
+          [ngStyle]="{'background-color':dairy?.bookConfig?.color ? dairy?.bookConfig?.color :'#E0C9A6'}"
+          (click)="openBook(dairy)">
+          <div class="book-details">
 
-          <h3 class="book-title-mini" [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive',
-            'color':dairy?.titleConfig?.color ? dairy?.titleConfig?.color : '' }">
-            {{dairy?.title}}</h3>
-          <!-- <p>Author: Author Name 1</p> -->
-          <!-- <p>Genre: {{{Fiction}}}</p> -->
-          <p class="book-year-mini" [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive',
-            'color':dairy?.titleConfig?.color ? dairy?.titleConfig?.color : ''  }">
-            {{dairy?.year}}
-          </p>
-          <p class="book-type-mini">
-            <i *ngIf="dairy?.accessLevel === 2" class="fas fa-lock"></i>
-            <i *ngIf="dairy?.accessLevel === 1" class="fas fa-unlock"></i>
-          </p>
-          <p class="book-type-mini book-lock-mini">
-            {{dairy?.type === 1 ? 'Personal Diary': 'Story Book'}}
-          </p>
+            <h3 class="book-title-mini" [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive',
+              'color':dairy?.titleConfig?.color ? dairy?.titleConfig?.color : '' }">
+              {{dairy?.title}}</h3>
+            <!-- <p>Author: Author Name 1</p> -->
+            <!-- <p>Genre: {{{Fiction}}}</p> -->
+            <p class="book-year-mini" [ngStyle]="{'font-family':dairy?.titleConfig?.font ? dairy?.titleConfig?.font  : 'cursive',
+              'color':dairy?.titleConfig?.color ? dairy?.titleConfig?.color : ''  }">
+              {{dairy?.year}}
+            </p>
+            <p class="book-type-mini private" [ngClass]="{'public': dairy?.accessLevel === 1}">
+              <i *ngIf="dairy?.accessLevel === 2" class="fas fa-lock"></i>
+              <i *ngIf="dairy?.accessLevel === 1" class="fas fa-unlock"></i>
+            </p>
+            <p class="book-type-mini book-lock-mini">
+              {{dairy?.type === 1 ? 'Personal Diary': 'Story Book'}}
+            </p>
+          </div>
+          <!-- <div class="overlay" (click)="openBook(dairy)">
+            <p>Click for more details</p>
+          </div> -->
         </div>
-        <!-- <div class="overlay" (click)="openBook(dairy)">
-          <p>Click for more details</p>
-        </div> -->
+        <div class="author-mini" *ngIf="userView === 'public'">
+          <p class="text">Author : {{dairy?.authorDetails?.profilename | titlecase}}</p>
+        </div>
       </div>
     </ng-container>
 
@@ -42,7 +58,7 @@
     <!-- Add more books as needed -->
 
     <ng-container *ngFor="let test of [].constructor(2)">
-      <div class="new-book">
+      <div class="new-book" *ngIf="userLoggedIn && userView === 'own'">
         <p class="new-book-logo">
           +
         </p>

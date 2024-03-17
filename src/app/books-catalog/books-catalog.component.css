@@ -48,7 +48,7 @@
 .book-type-mini {
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 5px;
   /* font-style: italic; */
   color: rgb(255, 255, 255);
   background-color: #333;
@@ -58,8 +58,17 @@
 }
 
 .book-lock-mini {
-  left: 45px;
+  left: 30px;
 }
+
+.private {
+  background-color: #670101;
+}
+
+.public {
+  background-color: #01670a;
+}
+
 
 .overlay {
   position: absolute;
@@ -134,4 +143,48 @@
     gap: 20px;
     margin-left: 22%;
   }
+}
+
+.author-mini {
+  margin-left: 10%;
+  /* position: relative; */
+  /* bottom: 10px; */
+}
+
+.author-mini .text {
+  background-color: #e6fffb;
+  color: black;
+  font-weight: bold;
+
+  padding: 10px;
+  /* margin-left: 25px; */
+
+  border-radius: 5px;
+
+  justify-content: center;
+  display: inline-flex;
+}
+
+.books-types {
+  margin-top: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.books-types .types {
+  margin-left: 2%;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid white;
+}
+
+.active-type {
+  background-color: whitesmoke;
+  color: black;
+  font-size: medium;
+  font-weight: bold;
 }

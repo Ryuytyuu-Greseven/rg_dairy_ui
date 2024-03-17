@@ -10,20 +10,20 @@ const routes: Routes = [
   {
     path: 'book',
     component: BookComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     children: [],
   },
   { path: 'login', component: LoginComponent },
   {
     path: 'books-catalog',
     component: BooksCatalogComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     children: [{ path: '**', component: BookComponent }],
   },
   {
     path: 'about-us',
     component: AboutComponent,
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }, // redirect all undeclared uls to login

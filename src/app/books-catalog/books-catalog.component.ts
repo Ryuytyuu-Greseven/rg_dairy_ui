@@ -13,6 +13,8 @@ export class BooksCatalogComponent implements OnDestroy, OnInit {
   loadNewBook = false;
 
   selfDairies: any[] = [];
+  userLoggedIn = false;
+  userView = 'public';
 
   // child book component
   isBookOpened = false;
@@ -29,7 +31,15 @@ export class BooksCatalogComponent implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchDairies();
+    if (this.appService.userLoggedIn) {
+      this.fetchDairies();
+      this.userLoggedIn = true;
+      this.userView = 'own';
+    } else {
+      this.fetchPublicDairies();
+      this.userLoggedIn = false;
+      this.userView = 'public';
+    }
 
     this.urlSubscription = this.activatedRoute.url.subscribe({
       next: (url) => {
@@ -63,11 +73,46 @@ export class BooksCatalogComponent implements OnDestroy, OnInit {
     // this.router.navigate(['/book']);
   }
 
+  // open and closed access
+  loadPersonalData(type: string) {
+    if (type === 'loca$%pudfic') {
+      this.fetchPublicDairies();
+      this.userView = 'public';
+    } else if (type === 'per(*@dety') {
+      this.fetchDairies();
+      this.userView = 'own';
+    }
+  }
+
+  // fetch self diaries after login
   fetchDairies() {
     const chunky = {};
     this.selfDairies = [];
 
     this.appService.selfDairies(chunky).subscribe({
+      next: (response: any) => {
+        console.log(response);
+
+        if (response?.success) {
+          this.selfDairies = response.data;
+          // this.toastr.success(response.message);
+        } else {
+          this.toastr.error('Unable to fetch dairies.');
+        }
+      },
+      error: (error: any) => {
+        console.log(error);
+        this.toastr.error('Unable to fetch dairies');
+      },
+    });
+  }
+
+  // fetch self diaries after login
+  fetchPublicDairies() {
+    const chunky = {};
+    this.selfDairies = [];
+
+    this.appService.publicDiaries(chunky).subscribe({
       next: (response: any) => {
         console.log(response);
 

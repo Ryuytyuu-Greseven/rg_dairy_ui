@@ -22,6 +22,9 @@ export class BookComponent implements OnDestroy, OnInit {
   currentDairyDetails: any = {};
   disableBookActions = false;
 
+  // user details
+  userDetails: any = {};
+
   // pages
   totalPages: Array<any> = [];
   previousTurnedPage = 0;
@@ -47,6 +50,7 @@ export class BookComponent implements OnDestroy, OnInit {
 
   // subscriptions
   urlSubscription = new Subscription();
+  profileSubs: Subscription;
 
   @Input() bookType: 'new' | 'old' = 'old';
   @Output() incomingBook = new EventEmitter();
@@ -56,7 +60,13 @@ export class BookComponent implements OnDestroy, OnInit {
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.profileSubs = this.appService.profileDetailsSubject.subscribe({
+      next: (response: any) => {
+        this.userDetails = response;
+      },
+    });
+  }
 
   ngOnInit() {
     console.log('Yeah Book Opened');
@@ -74,8 +84,15 @@ export class BookComponent implements OnDestroy, OnInit {
           this.title = 'Loading . . .';
           this.year = '';
           this.bookType = 'old';
-          this.fetchDairy();
-          this.fetchPages();
+          if (this.appService.userLoggedIn) {
+            this.fetchDairy();
+            this.fetchPages();
+            this.userDetails = this.appService.profileDetails;
+          } else {
+            this.fetchPublicDiary();
+            this.fetchPublicPages();
+            this.userDetails = {};
+          }
         }
       },
     });
@@ -272,6 +289,34 @@ export class BookComponent implements OnDestroy, OnInit {
     });
   }
 
+  // fetch the publix diary
+  fetchPublicDiary() {
+    const chunky = {
+      dairyId: this.currentDairyId,
+    };
+
+    this.appService.publicDiaryDetails(chunky).subscribe({
+      next: (response: any) => {
+        console.log('Login Response', response);
+
+        if (response?.success) {
+          this.previousTurnedPage = 0;
+          this.currentDairyDetails = response.data;
+          this.title = this.currentDairyDetails.title;
+          this.year = this.currentDairyDetails.year;
+          this.bgColorSelected = this.currentDairyDetails.bookConfig.color;
+          this.bgColorSelecetdTitle =
+            this.currentDairyDetails.titleConfig.color;
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      error: () => {
+        this.toastr.error('Unable to login.');
+      },
+    });
+  }
+
   closeOldDairy() {
     this.router.navigate(['/books-catalog']);
     this.appService.oldDairySubject.next(false);
@@ -375,6 +420,39 @@ export class BookComponent implements OnDestroy, OnInit {
     });
   }
 
+  // fetching the apges in public diary
+  fetchPublicPages() {
+    if (this.book_loading) {
+      return;
+    }
+
+    this.book_loading = true;
+    const chunky = {
+      // pageNo: 1,
+      dairyId: this.currentDairyId,
+    };
+
+    this.appService.pagesFromPublicDiary(chunky).subscribe({
+      next: (response: any) => {
+        console.log('Pages Response', response);
+        this.book_loading = false;
+
+        if (response?.success) {
+          const newPages = [...response.data];
+
+          this.totalPages.unshift(...newPages.reverse());
+        } else {
+          this.toastr.error(response.message);
+        }
+      },
+      error: (error) => {
+        console.log(error);
+        this.book_loading = false;
+        this.toastr.error('Ooops!! Try again!');
+      },
+    });
+  }
+
   addNewPage() {
     this.totalPages.unshift({
       text: 'Write someting...',
@@ -384,5 +462,6 @@ export class BookComponent implements OnDestroy, OnInit {
 
   ngOnDestroy() {
     this.urlSubscription.unsubscribe();
+    this.profileSubs.unsubscribe();
   }
 }
