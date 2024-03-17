@@ -85,10 +85,13 @@ export class BookComponent implements OnDestroy, OnInit {
           this.year = '';
           this.bookType = 'old';
           this.previousTurnedPage = 0;
-          if(this.appService.currentDiary?.title){
+          if (this.appService.currentDiary?.title) {
             this.collectDiaryDetails(this.appService.currentDiary);
           }
-          if (this.appService.userLoggedIn) {
+          if (
+            this.appService.userLoggedIn &&
+            this.currentDairyDetails?.accessLevel === 2
+          ) {
             this.fetchDairy();
             this.fetchPages();
             this.userDetails = this.appService.profileDetails;
