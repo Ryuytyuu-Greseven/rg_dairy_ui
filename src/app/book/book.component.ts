@@ -84,6 +84,10 @@ export class BookComponent implements OnDestroy, OnInit {
           this.title = 'Loading . . .';
           this.year = '';
           this.bookType = 'old';
+          this.previousTurnedPage = 0;
+          if(this.appService.currentDiary?.title){
+            this.collectDiaryDetails(this.appService.currentDiary);
+          }
           if (this.appService.userLoggedIn) {
             this.fetchDairy();
             this.fetchPages();
@@ -272,13 +276,7 @@ export class BookComponent implements OnDestroy, OnInit {
         console.log('Login Response', response);
 
         if (response?.success) {
-          this.previousTurnedPage = 0;
-          this.currentDairyDetails = response.data;
-          this.title = this.currentDairyDetails.title;
-          this.year = this.currentDairyDetails.year;
-          this.bgColorSelected = this.currentDairyDetails.bookConfig.color;
-          this.bgColorSelecetdTitle =
-            this.currentDairyDetails.titleConfig.color;
+          this.collectDiaryDetails(response.data);
         } else {
           this.toastr.error(response.message);
         }
@@ -287,6 +285,15 @@ export class BookComponent implements OnDestroy, OnInit {
         this.toastr.error('Unable to login.');
       },
     });
+  }
+
+  collectDiaryDetails(book: any) {
+    // this.previousTurnedPage = 0;
+    this.currentDairyDetails = book;
+    this.title = this.currentDairyDetails.title;
+    this.year = this.currentDairyDetails.year;
+    this.bgColorSelected = this.currentDairyDetails.bookConfig.color;
+    this.bgColorSelecetdTitle = this.currentDairyDetails.titleConfig.color;
   }
 
   // fetch the publix diary
@@ -300,13 +307,8 @@ export class BookComponent implements OnDestroy, OnInit {
         console.log('Login Response', response);
 
         if (response?.success) {
-          this.previousTurnedPage = 0;
-          this.currentDairyDetails = response.data;
-          this.title = this.currentDairyDetails.title;
-          this.year = this.currentDairyDetails.year;
-          this.bgColorSelected = this.currentDairyDetails.bookConfig.color;
-          this.bgColorSelecetdTitle =
-            this.currentDairyDetails.titleConfig.color;
+          // this.previousTurnedPage = 0;
+          this.collectDiaryDetails(response.data);
         } else {
           this.toastr.error(response.message);
         }
@@ -319,6 +321,7 @@ export class BookComponent implements OnDestroy, OnInit {
 
   closeOldDairy() {
     this.router.navigate(['/books-catalog']);
+    this.appService.currentDiary = {};
     this.appService.oldDairySubject.next(false);
   }
 

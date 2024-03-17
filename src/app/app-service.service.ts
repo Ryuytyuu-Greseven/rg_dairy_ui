@@ -11,6 +11,8 @@ export class AppServiceService {
   userLoggedIn = false;
   // books
   oldDairySubject = new Subject();
+  // passsing the dairy details to book component
+  currentDiary: any = {};
 
   // user details
   profileDetailsSubject = new BehaviorSubject({});

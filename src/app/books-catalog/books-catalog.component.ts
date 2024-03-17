@@ -139,6 +139,7 @@ export class BooksCatalogComponent implements OnDestroy, OnInit {
 
   openBook(bookDetails: any) {
     this.isBookOpened = true;
+    this.appService.currentDiary = bookDetails;
     this.router.navigate([`/books-catalog/${bookDetails?._id}`]);
   }
 
