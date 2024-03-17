@@ -50,6 +50,7 @@ export class AppComponent implements OnDestroy {
   logoutUser() {
     sessionStorage.clear();
     this.appService.userLoggedIn = false;
+    this.appService.currentDiary = false;
     this.appService.profileDetailsSubject.next({});
     // const navbar = document.getElementById('mobile-nav-ind');
     // navbar?.classList.remove('open');

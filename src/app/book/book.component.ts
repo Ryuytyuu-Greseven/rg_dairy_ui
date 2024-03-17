@@ -85,12 +85,13 @@ export class BookComponent implements OnDestroy, OnInit {
           this.year = '';
           this.bookType = 'old';
           this.previousTurnedPage = 0;
+          const userView = sessionStorage.getItem('user_view');
           if (this.appService.currentDiary?.title) {
             this.collectDiaryDetails(this.appService.currentDiary);
           }
           if (
-            this.appService.userLoggedIn &&
-            this.currentDairyDetails?.accessLevel === 2
+            sessionStorage.getItem('locator')?.length &&
+            (!userView || userView === 'own')
           ) {
             this.fetchDairy();
             this.fetchPages();

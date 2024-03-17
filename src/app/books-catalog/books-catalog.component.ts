@@ -31,14 +31,26 @@ export class BooksCatalogComponent implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.appService.userLoggedIn) {
-      this.fetchDairies();
+    if (sessionStorage.getItem('locator')?.length) {
       this.userLoggedIn = true;
+    }
+
+    // sessionStorage.setItem('user_view', 'public');
+    if (
+      sessionStorage.getItem('user_view') === 'public' ||
+      !this.userLoggedIn
+    ) {
+      sessionStorage.setItem('user_view', 'public');
+      this.userView = 'public';
+    } else {
+      sessionStorage.setItem('user_view', 'own');
       this.userView = 'own';
+    }
+
+    if (this.userView === 'own') {
+      this.fetchDairies();
     } else {
       this.fetchPublicDairies();
-      this.userLoggedIn = false;
-      this.userView = 'public';
     }
 
     this.urlSubscription = this.activatedRoute.url.subscribe({
@@ -63,6 +75,14 @@ export class BooksCatalogComponent implements OnDestroy, OnInit {
       next: (event) => {
         if (!event) {
           this.isBookOpened = false;
+
+          if (sessionStorage.getItem('user_view') === 'public') {
+            sessionStorage.setItem('user_view', 'public');
+            this.userView = 'public';
+          } else {
+            sessionStorage.setItem('user_view', 'own');
+            this.userView = 'own';
+          }
         }
       },
     });
@@ -78,9 +98,11 @@ export class BooksCatalogComponent implements OnDestroy, OnInit {
     if (type === 'loca$%pudfic') {
       this.fetchPublicDairies();
       this.userView = 'public';
+      sessionStorage.setItem('user_view', 'public');
     } else if (type === 'per(*@dety') {
       this.fetchDairies();
       this.userView = 'own';
+      sessionStorage.setItem('user_view', 'own');
     }
   }
 
