@@ -3,7 +3,7 @@
   <nav *ngIf="isScreenSmall(); else largeScreen" class="nav-links">
     <button class="menu-toggle" (click)="toggleNav()">&#9776;</button>
 
-    <span class="logo">Diary1</span>
+    <span class="logo">Diary</span>
 
     <!-- <a mat-button routerLink="/home">Home</a> -->
     <!-- <button class="menu-toggle" (click)="toggleNav()">&#9776;</button>
@@ -25,7 +25,7 @@
 
   <ng-template #largeScreen>
     <nav class="nav-links">
-      <span class="logo">Diary2</span>
+      <span class="logo">Diary</span>
       <a mat-button routerLink="/books-catalog">Books</a>
       <a mat-button routerLink="/about-us">About</a>
 
