@@ -29,6 +29,7 @@ export class AppComponent implements OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    //
     if (environment.production) {
       console.log = () => {};
     }
